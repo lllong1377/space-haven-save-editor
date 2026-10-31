@@ -1,0 +1,32 @@
+# ===== 本地运行 / 打包产物（不入库） =====
+config.json
+server.log
+backups/
+__pycache__/
+*.pyc
+dist/
+build/
+*.spec
+# 二进制通过 GitHub Releases 分发
+SpaceHavenSaveEditor.exe
+
+# ===== 开发辅助脚本 / 测试（仅本地开发用，不随 exe 版发布） =====
+# 本地启动器，exe 版不需要
+start_editor.bat
+test_http.py
+test_ui.js
+test_save_editor.py
+
+# ===== 参考资料 / 临时文件（项目调研阶段产物） =====
+baha_raw.html
+baha_local.txt
+baha_text.txt
+clinit.bin
+dump_clinit.py
+http_out.txt
+ui_out.txt
+_test_save
+_http_test/
+
+# ===== 本地 Agent 数据，勿上传 =====
+.workbuddy/

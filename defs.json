@@ -1,0 +1,1380 @@
+{
+ "game": "Space Haven",
+ "textsCount": 6829,
+ "items": {
+  "10": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "11": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "15": {
+   "cn": "根菜",
+   "en": "Root vegetables",
+   "kind": "raw"
+  },
+  "16": {
+   "cn": "水",
+   "en": "Water",
+   "kind": "raw"
+  },
+  "17": {
+   "cn": "根菜",
+   "en": "Root vegetables",
+   "kind": "raw"
+  },
+  "34": {
+   "cn": "电力",
+   "en": "Power",
+   "kind": "raw"
+  },
+  "40": {
+   "cn": "冰",
+   "en": "Ice",
+   "kind": "raw"
+  },
+  "63": {
+   "cn": "氧气",
+   "en": "Oxygen",
+   "kind": "raw"
+  },
+  "64": {
+   "cn": "二氧化碳",
+   "en": "CO2",
+   "kind": "raw"
+  },
+  "71": {
+   "cn": "有机物",
+   "en": "Bio Matter",
+   "kind": "raw"
+  },
+  "73": {
+   "cn": "热量",
+   "en": "Heat",
+   "kind": "raw"
+  },
+  "77": {
+   "cn": "烟雾",
+   "en": "Smoke",
+   "kind": "raw"
+  },
+  "121": {
+   "cn": "人类尸体",
+   "en": "Human Corpse",
+   "kind": "item"
+  },
+  "127": {
+   "cn": "碎石",
+   "en": "Rubble",
+   "kind": "raw"
+  },
+  "155": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "156": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "157": {
+   "cn": "基础金属",
+   "en": "Base Metals",
+   "kind": "raw"
+  },
+  "158": {
+   "cn": "能量水晶",
+   "en": "Energium",
+   "kind": "raw"
+  },
+  "162": {
+   "cn": "基础方块",
+   "en": "Infrablock",
+   "kind": "raw"
+  },
+  "169": {
+   "cn": "贵金属",
+   "en": "Noble Metals",
+   "kind": "raw"
+  },
+  "170": {
+   "cn": "碳",
+   "en": "Carbon",
+   "kind": "raw"
+  },
+  "171": {
+   "cn": "化学原料",
+   "en": "Raw Chemicals",
+   "kind": "raw"
+  },
+  "172": {
+   "cn": "超能矿石",
+   "en": "Hyperium",
+   "kind": "raw"
+  },
+  "173": {
+   "cn": "电子元件",
+   "en": "Electronics Component",
+   "kind": "raw"
+  },
+  "174": {
+   "cn": "能量棒",
+   "en": "Energy rod",
+   "kind": "raw"
+  },
+  "175": {
+   "cn": "塑料",
+   "en": "Plastics",
+   "kind": "raw"
+  },
+  "176": {
+   "cn": "化学物质",
+   "en": "Chemicals",
+   "kind": "raw"
+  },
+  "177": {
+   "cn": "布料",
+   "en": "Fabrics",
+   "kind": "raw"
+  },
+  "178": {
+   "cn": "超能燃料",
+   "en": "Hyperfuel",
+   "kind": "raw"
+  },
+  "179": {
+   "cn": "加工过的食品",
+   "en": "Processed Food",
+   "kind": "raw"
+  },
+  "481": {
+   "cn": "帽子",
+   "en": "Hat",
+   "kind": "item"
+  },
+  "488": {
+   "cn": "墨镜",
+   "en": "Sunglasses",
+   "kind": "item"
+  },
+  "704": {
+   "cn": "水果",
+   "en": "Fruits",
+   "kind": "raw"
+  },
+  "705": {
+   "cn": "人工肉",
+   "en": "Artificial meat",
+   "kind": "raw"
+  },
+  "706": {
+   "cn": "水果",
+   "en": "Fruits",
+   "kind": "raw"
+  },
+  "707": {
+   "cn": "人工肉",
+   "en": "Artificial meat",
+   "kind": "raw"
+  },
+  "712": {
+   "cn": "太空食物",
+   "en": "Space food",
+   "kind": "raw"
+  },
+  "725": {
+   "cn": "步枪",
+   "en": "Rifle",
+   "kind": "item"
+  },
+  "728": {
+   "cn": "冲锋枪",
+   "en": "SMG",
+   "kind": "item"
+  },
+  "729": {
+   "cn": "霰弹枪",
+   "en": "Shotgun",
+   "kind": "item"
+  },
+  "746": {
+   "cn": "手雷",
+   "en": "Grenade",
+   "kind": "item"
+  },
+  "760": {
+   "cn": "手枪",
+   "en": "Pistol",
+   "kind": "item"
+  },
+  "923": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "930": {
+   "cn": "科技方块",
+   "en": "Techblock",
+   "kind": "raw"
+  },
+  "971": {
+   "cn": "有害气体",
+   "en": "Hazardous Gas",
+   "kind": "raw"
+  },
+  "984": {
+   "cn": "怪物肉",
+   "en": "Monster meat",
+   "kind": "raw"
+  },
+  "985": {
+   "cn": "人肉",
+   "en": "Human meat",
+   "kind": "raw"
+  },
+  "997": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "998": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "999": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "1000": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "1021": {
+   "cn": "狙击枪",
+   "en": "Sniper rifle",
+   "kind": "item"
+  },
+  "1152": {
+   "cn": "X1型哨戒炮",
+   "en": "Sentry gun X1",
+   "kind": "item"
+  },
+  "1397": {
+   "cn": "食物组",
+   "en": "Food group",
+   "kind": "raw"
+  },
+  "1435": {
+   "cn": "被茧包裹",
+   "en": "Cocooned",
+   "kind": "item"
+  },
+  "1445": {
+   "cn": "建造工具",
+   "en": "Building tools",
+   "kind": "raw"
+  },
+  "1494": {
+   "cn": "建造枪",
+   "en": "Construction gun",
+   "kind": "item"
+  },
+  "1495": {
+   "cn": "建造枪",
+   "en": "Construction gun",
+   "kind": "item"
+  },
+  "1733": {
+   "cn": "灭火器",
+   "en": "Fire Extinguisher",
+   "kind": "item"
+  },
+  "1759": {
+   "cn": "船体方块",
+   "en": "Hull Block",
+   "kind": "raw"
+  },
+  "1819": {
+   "cn": "数据日志",
+   "en": "Data log",
+   "kind": "item"
+  },
+  "1856": {
+   "cn": "货币",
+   "en": "Credits",
+   "kind": "item"
+  },
+  "1858": {
+   "cn": "货币",
+   "en": "Credits",
+   "kind": "raw"
+  },
+  "1873": {
+   "cn": "基础废料",
+   "en": "Infra Scrap",
+   "kind": "raw"
+  },
+  "1874": {
+   "cn": "柔性废料",
+   "en": "Soft Scrap",
+   "kind": "raw"
+  },
+  "1886": {
+   "cn": "船体废料",
+   "en": "Hull Scrap",
+   "kind": "raw"
+  },
+  "1919": {
+   "cn": "能量方块",
+   "en": "Energy block",
+   "kind": "raw"
+  },
+  "1920": {
+   "cn": "超级方块",
+   "en": "Superblock",
+   "kind": "raw"
+  },
+  "1921": {
+   "cn": "柔性方块",
+   "en": "Soft block",
+   "kind": "raw"
+  },
+  "1922": {
+   "cn": "钢板",
+   "en": "Steel Plates",
+   "kind": "raw"
+  },
+  "1924": {
+   "cn": "光电元件",
+   "en": "Optronics Component",
+   "kind": "raw"
+  },
+  "1925": {
+   "cn": "量子电子元件",
+   "en": "Quantronics Component",
+   "kind": "raw"
+  },
+  "1926": {
+   "cn": "能量电池",
+   "en": "Energy Cell",
+   "kind": "raw"
+  },
+  "1932": {
+   "cn": "纤维",
+   "en": "Fibers",
+   "kind": "raw"
+  },
+  "1944": {
+   "cn": "纤维",
+   "en": "Fibers",
+   "kind": "raw"
+  },
+  "1946": {
+   "cn": "科技废料",
+   "en": "Tech Scrap",
+   "kind": "raw"
+  },
+  "1947": {
+   "cn": "能量废料",
+   "en": "Energy Scrap",
+   "kind": "raw"
+  },
+  "1954": {
+   "cn": "人类尸体",
+   "en": "Human Corpse",
+   "kind": "item"
+  },
+  "1955": {
+   "cn": "爬行怪尸体",
+   "en": "Crawler Corpse",
+   "kind": "item"
+  },
+  "1956": {
+   "cn": "机器人尸体",
+   "en": "Android Corpse",
+   "kind": "item"
+  },
+  "2053": {
+   "cn": "医疗用品",
+   "en": "Medical Supplies",
+   "kind": "raw"
+  },
+  "2058": {
+   "cn": "静脉输液",
+   "en": "IV Fluid",
+   "kind": "raw"
+  },
+  "2419": {
+   "cn": "清洁工具",
+   "en": "Cleaning Tool",
+   "kind": "item"
+  },
+  "2452": {
+   "cn": "水蒸汽",
+   "en": "Water Vapor",
+   "kind": "raw"
+  },
+  "2475": {
+   "cn": "肥料",
+   "en": "Fertilizer",
+   "kind": "raw"
+  },
+  "2540": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2541": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2542": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2543": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2657": {
+   "cn": "坚果和种子",
+   "en": "Nuts and seeds",
+   "kind": "raw"
+  },
+  "2658": {
+   "cn": "坚果和种子",
+   "en": "Nuts and seeds",
+   "kind": "raw"
+  },
+  "2714": {
+   "cn": "爆炸弹",
+   "en": "Explosive ammunition",
+   "kind": "item"
+  },
+  "2715": {
+   "cn": "爆炸弹",
+   "en": "Explosive ammunition",
+   "kind": "raw"
+  },
+  "2774": {
+   "cn": "人类尸体",
+   "en": "Human Corpse",
+   "kind": "item"
+  },
+  "2775": {
+   "cn": "人类尸体",
+   "en": "Human Corpse",
+   "kind": "item"
+  },
+  "2797": {
+   "cn": "奴隶项圈",
+   "en": "Slave collar",
+   "kind": "item"
+  },
+  "2851": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2853": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2854": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2855": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2856": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2857": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2858": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "2883": {
+   "cn": "物流机器人残骸",
+   "en": "Logistics bot rubble",
+   "kind": "item"
+  },
+  "2884": {
+   "cn": "物流机器人",
+   "en": "Logistics Robot",
+   "kind": "item"
+  },
+  "2899": {
+   "cn": "回收机器人残骸",
+   "en": "Salvage robot rubble",
+   "kind": "item"
+  },
+  "2900": {
+   "cn": "回收机器人",
+   "en": "Salvage robot",
+   "kind": "item"
+  },
+  "3069": {
+   "cn": "激光步枪",
+   "en": "Laser Rifle",
+   "kind": "item"
+  },
+  "3070": {
+   "cn": "激光手枪",
+   "en": "Laser Pistol",
+   "kind": "item"
+  },
+  "3071": {
+   "cn": "等离子集束枪",
+   "en": "Plasma Clustergun",
+   "kind": "item"
+  },
+  "3072": {
+   "cn": "等离子步枪",
+   "en": "Plasma Rifle",
+   "kind": "item"
+  },
+  "3077": {
+   "cn": "喷气怪尸体",
+   "en": "Hauler Corpse",
+   "kind": "item"
+  },
+  "3079": {
+   "cn": "人类尸体（玩家阵营）",
+   "en": "Human Corpse (player)",
+   "kind": "item"
+  },
+  "3081": {
+   "cn": "喷气怪尸体",
+   "en": "Hauler Corpse",
+   "kind": "item"
+  },
+  "3196": {
+   "cn": "高级电力",
+   "en": "Advanced Power",
+   "kind": "raw"
+  },
+  "3366": {
+   "cn": "轻度酒精饮料",
+   "en": "Mild Alcohol",
+   "kind": "raw"
+  },
+  "3367": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "3378": {
+   "cn": "谷物和啤酒花",
+   "en": "Grains and Hops",
+   "kind": "raw"
+  },
+  "3379": {
+   "cn": "谷物和啤酒花",
+   "en": "Grains and Hops",
+   "kind": "raw"
+  },
+  "3383": {
+   "cn": "防弹背心",
+   "en": "Bulletproof Vest",
+   "kind": "item"
+  },
+  "3384": {
+   "cn": "装甲背心",
+   "en": "Armored Vest",
+   "kind": "item"
+  },
+  "3386": {
+   "cn": "遥控装置",
+   "en": "Remote Control",
+   "kind": "item"
+  },
+  "3387": {
+   "cn": "氧气发生器",
+   "en": "Oxygen generator",
+   "kind": "item"
+  },
+  "3388": {
+   "cn": "氧气罐",
+   "en": "Oxygen Tank",
+   "kind": "item"
+  },
+  "3419": {
+   "cn": "强化零件",
+   "en": "Augmentation Parts",
+   "kind": "raw"
+  },
+  "3512": {
+   "cn": "异星矿石",
+   "en": "Exotic ore",
+   "kind": "raw"
+  },
+  "3513": {
+   "cn": "基础矿石",
+   "en": "Basic ore",
+   "kind": "raw"
+  },
+  "3522": {
+   "cn": "空间站日志",
+   "en": "Station log",
+   "kind": "item"
+  },
+  "3523": {
+   "cn": "飞船日志",
+   "en": "Ship log",
+   "kind": "item"
+  },
+  "3524": {
+   "cn": "研究日志",
+   "en": "Research log",
+   "kind": "item"
+  },
+  "3525": {
+   "cn": "货物清单",
+   "en": "Cargo manifest",
+   "kind": "item"
+  },
+  "3526": {
+   "cn": "医疗日志",
+   "en": "Medical log",
+   "kind": "item"
+  },
+  "3527": {
+   "cn": "奴役日志",
+   "en": "Enslavement log",
+   "kind": "item"
+  },
+  "3528": {
+   "cn": "俘虏日志",
+   "en": "Prisoner log",
+   "kind": "item"
+  },
+  "3529": {
+   "cn": "休眠日志",
+   "en": "Hypersleep log",
+   "kind": "item"
+  },
+  "3620": {
+   "cn": "损坏的武器",
+   "en": "Broken weapon",
+   "kind": "item"
+  },
+  "3621": {
+   "cn": "损坏的护甲",
+   "en": "Broken armor",
+   "kind": "item"
+  },
+  "3658": {
+   "cn": "激光手枪",
+   "en": "Laser Pistol",
+   "kind": "item"
+  },
+  "3670": {
+   "cn": "被茧包裹",
+   "en": "Cocooned",
+   "kind": "item"
+  },
+  "3702": {
+   "cn": "建造枪",
+   "en": "Construction gun",
+   "kind": "item"
+  },
+  "3711": {
+   "cn": "进化中的外星生物核心残骸",
+   "en": "Evolving Alien Core Remains",
+   "kind": "item"
+  },
+  "3712": {
+   "cn": "外星生物巢穴核心残骸",
+   "en": "Alien Hive Core Remains",
+   "kind": "item"
+  },
+  "3713": {
+   "cn": "黑猩猩（步行机器人）残骸",
+   "en": "Chimp (Walkerbot) rubble",
+   "kind": "item"
+  },
+  "3714": {
+   "cn": "仓鼠（飞行机器人）残骸",
+   "en": "Hamster (Flybot) rubble",
+   "kind": "item"
+  },
+  "3728": {
+   "cn": "代码片段",
+   "en": "Code fragment",
+   "kind": "item"
+  },
+  "3782": {
+   "cn": "喷气怪尸体",
+   "en": "Hauler Corpse",
+   "kind": "item"
+  },
+  "3925": {
+   "cn": "ISP",
+   "en": "ISP",
+   "kind": "item"
+  },
+  "3956": {
+   "cn": "冲锋枪",
+   "en": "SMG",
+   "kind": "item"
+  },
+  "3960": {
+   "cn": "火焰喷射器",
+   "en": "Flamethrower",
+   "kind": "item"
+  },
+  "3961": {
+   "cn": "电击步枪",
+   "en": "Stun Rifle",
+   "kind": "item"
+  },
+  "3962": {
+   "cn": "电击手枪",
+   "en": "Stun Pistol",
+   "kind": "item"
+  },
+  "3963": {
+   "cn": "损坏的武器配件",
+   "en": "Broken Weapon Attachment",
+   "kind": "item"
+  },
+  "3967": {
+   "cn": "爆破榴弹发射器",
+   "en": "Explosive Grenade Launcher",
+   "kind": "item"
+  },
+  "3968": {
+   "cn": "基础瞄准镜",
+   "en": "Basic scope",
+   "kind": "item"
+  },
+  "3969": {
+   "cn": "战术握把",
+   "en": "Tactical Grip",
+   "kind": "item"
+  },
+  "3975": {
+   "cn": "霰弹枪自动装填器",
+   "en": "Shotgun Autoloader",
+   "kind": "item"
+  },
+  "4005": {
+   "cn": "止痛药",
+   "en": "Painkillers",
+   "kind": "item"
+  },
+  "4006": {
+   "cn": "战斗兴奋剂",
+   "en": "Combat Stimulant",
+   "kind": "item"
+  },
+  "4007": {
+   "cn": "绷带",
+   "en": "Bandage",
+   "kind": "item"
+  },
+  "4020": {
+   "cn": "情绪兴奋剂",
+   "en": "Mood Stimulant",
+   "kind": "item"
+  },
+  "4022": {
+   "cn": "CSP",
+   "en": "CSP",
+   "kind": "item"
+  },
+  "4025": {
+   "cn": "外星生物酶",
+   "en": "Alien Enzyme",
+   "kind": "item"
+  },
+  "4027": {
+   "cn": "外星生物器官",
+   "en": "Alien Organs",
+   "kind": "raw"
+  },
+  "4028": {
+   "cn": "人类器官",
+   "en": "Human Organs",
+   "kind": "raw"
+  },
+  "4030": {
+   "cn": "纳米伤口包扎剂",
+   "en": "Nano Wound Dressing",
+   "kind": "item"
+  },
+  "4035": {
+   "cn": "镇静剂",
+   "en": "Sedative Syringe",
+   "kind": "item"
+  },
+  "4040": {
+   "cn": "小型爆破炸药",
+   "en": "Small Breaching Charge",
+   "kind": "item"
+  },
+  "4065": {
+   "cn": "太空服扩氧背心",
+   "en": "Space Suit Oxygen Extender",
+   "kind": "item"
+  },
+  "4076": {
+   "cn": "燃烧榴弹发射器",
+   "en": "Incendiary Grenade Launcher",
+   "kind": "item"
+  },
+  "4078": {
+   "cn": "外星寄生虫尸体",
+   "en": "Alien Parasite Corpse",
+   "kind": "item"
+  },
+  "4101": {
+   "cn": "叛变机器人攻击无人机残骸",
+   "en": "Rogue bot Attack Drone rubble",
+   "kind": "item"
+  },
+  "4102": {
+   "cn": "叛变机器人哨兵无人机残骸",
+   "en": "Rogue bot Sentry Drone rubble",
+   "kind": "item"
+  },
+  "4103": {
+   "cn": "叛变机器人侦察无人机残骸",
+   "en": "Rogue bot Scout rubble",
+   "kind": "item"
+  },
+  "4104": {
+   "cn": "小马驹（运输机）残骸",
+   "en": "Pony (Dropship) rubble",
+   "kind": "item"
+  },
+  "4106": {
+   "cn": "寄生物尸体",
+   "en": "Infester Corpse",
+   "kind": "item"
+  },
+  "4109": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "4110": {
+   "cn": "Placeholder name",
+   "en": "Placeholder name",
+   "kind": "item"
+  },
+  "4145": {
+   "cn": "探路者信标",
+   "en": "Pathfinder Beacon",
+   "kind": "item"
+  },
+  "4146": {
+   "cn": "伊甸园的线索",
+   "en": "Eden Clue",
+   "kind": "item"
+  },
+  "4530": {
+   "cn": "战斗机器人",
+   "en": "Combat Robot",
+   "kind": "item"
+  },
+  "4531": {
+   "cn": "战斗机器人残骸",
+   "en": "Combat Robot rubble",
+   "kind": "item"
+  },
+  "4533": {
+   "cn": "冲锋枪",
+   "en": "SMG",
+   "kind": "item"
+  }
+ },
+ "traits": {
+  "191": {
+   "cn": "英雄",
+   "en": "Hero",
+   "desc": "英雄不惧挑战，会坚守阵地。内心强大。",
+   "descEn": "Heroes stand their ground and don't back down from challenges. Mentally strong."
+  },
+  "655": {
+   "cn": "懦弱",
+   "en": "Wimp",
+   "desc": "不是很勇敢，懦弱的人在与别人发生冲突时经常会选择退缩。",
+   "descEn": "Not very brave, a wimp often chooses to flee from a confrontational situation."
+  },
+  "656": {
+   "cn": "笨拙",
+   "en": "Clumsy",
+   "desc": "笨拙的人易出事故，因为他们做事情粗心，不受约束。",
+   "descEn": "A clumsy person often has accidents because they do not behave in a careful, controlled way."
+  },
+  "1034": {
+   "cn": "喜怒无常",
+   "en": "Moody",
+   "desc": "情绪变化不定，难以预测，尤其容易突然陷入忧郁消沉的状态。",
+   "descEn": "A person with unpredictable changes of mood, especially sudden bouts of gloominess or sullenness."
+  },
+  "1035": {
+   "cn": "聪明",
+   "en": "Smart",
+   "desc": "头脑灵活，擅长解决难题。",
+   "descEn": "Intelligent and capable of finding solutions to difficult problems."
+  },
+  "1036": {
+   "cn": "嗜血",
+   "en": "Bloodlust",
+   "desc": "享受血腥和杀戮。战斗中无所畏惧。",
+   "descEn": "Relishes the sight of blood and mayhem. Does not feel unsafe in battles."
+  },
+  "1037": {
+   "cn": "孤僻",
+   "en": "Antisocial",
+   "desc": "倾向于和人保持距离，喜欢独处。",
+   "descEn": "Tends to avoid spending time with other people, and keeps to themselves."
+  },
+  "1038": {
+   "cn": "无安全感",
+   "en": "Needy",
+   "desc": "需要和别人呆在一起，否则很快就会被孤独击垮。",
+   "descEn": "Needs to be around others or will quickly feel overwhelmed by loneliness."
+  },
+  "1039": {
+   "cn": "学习能力强",
+   "en": "Fast learner",
+   "desc": "学习新事物和新技能的速度比大多数人快。",
+   "descEn": "Learns new things and skills faster than most."
+  },
+  "1040": {
+   "cn": "懒惰",
+   "en": "Lazy",
+   "desc": "不愿意像其他人一样努力。喜欢把更多时间花在休闲娱乐活动上。",
+   "descEn": "Not willing to put in as much effort as others. Likes to spend more time on joy and idle activities."
+  },
+  "1041": {
+   "cn": "勤奋",
+   "en": "Hard working",
+   "desc": "喜欢忙个不停。和其他人相比，对休闲娱乐活动的需求较少。",
+   "descEn": "Likes to keep their hands busy most the time. Requires fewer joy and idle activities than others."
+  },
+  "1042": {
+   "cn": "变态",
+   "en": "Psychopath",
+   "desc": "缺乏同情心或对他人的感情，做任何事情都不会感到难过。",
+   "descEn": "Lacks empathy or feeling for other people, and does not feel bad about anything they have done."
+  },
+  "1043": {
+   "cn": "和平爱好者",
+   "en": "Peace-loving",
+   "desc": "热爱和平，会不遗余力争取和平。相比其他人更容易受冲突影响。",
+   "descEn": "Loves peace and tries to promote it in everything they do. Will be more negatively affected by conflicts than others."
+  },
+  "1044": {
+   "cn": "意志坚强",
+   "en": "Iron-willed",
+   "desc": "不轻言放弃，比大多数人都更有毅力。",
+   "descEn": "Will not give up easily and has more mental fortitude than most."
+  },
+  "1045": {
+   "cn": "太空旅行者",
+   "en": "Spacefarer",
+   "desc": "超爱太空和探险。只要呆在太空中，心情就会一直大好。",
+   "descEn": "Absolutely loves space and exploration. Mood is permanently lifted while in space."
+  },
+  "1046": {
+   "cn": "自信",
+   "en": "Confident",
+   "desc": "自信的人很少优柔寡断，天生自尊心较强，且更擅长社交。",
+   "descEn": "A confident person hesitates less, has naturally higher self-esteem and is more adept socially."
+  },
+  "1047": {
+   "cn": "神经质",
+   "en": "Neurotic",
+   "desc": "经常忧心忡忡，因焦虑和情绪波动而备受煎熬。",
+   "descEn": "A constant worrier, plagued by anxiety and mood swings."
+  },
+  "1048": {
+   "cn": "迷人",
+   "en": "Charming",
+   "desc": "擅长社交，谈判高手。知道如何让他人感到放松。",
+   "descEn": "Socially adept and great negotiator. Knows how to make others feel at ease."
+  },
+  "1533": {
+   "cn": "铁胃",
+   "en": "Iron stomach",
+   "desc": "什么都能吃。馊掉或恶心的食物也不会对其产生影响。",
+   "descEn": "This persons stomach can handle anything. Won't be affected by spoiled or disgusting food."
+  },
+  "1534": {
+   "cn": "嗜夜癖",
+   "en": "Nyctophilia",
+   "desc": "在黑暗中一样感到舒服。没有光线不会影响心情。",
+   "descEn": "Finds comfort in the dark. Mood is not affected by the absence of light."
+  },
+  "1535": {
+   "cn": "极简主义者",
+   "en": "Minimalist",
+   "desc": "这名船员是个禁欲主义者，喜欢万事从简。他不介意睡在地板上，吃饭没有餐桌也没关系。",
+   "descEn": "This crew member is an ascetic who likes to keep things simple. They don't mind sleeping on floors or eating without a table."
+  },
+  "1560": {
+   "cn": "话痨",
+   "en": "Talkative",
+   "desc": "这名船员超爱说话，只要和别人聊上几句情绪就会提升。",
+   "descEn": "This crew member loves to talk, and their mood will be boosted whenever they get to have a conversation."
+  },
+  "1562": {
+   "cn": "美食家",
+   "en": "Gourmand",
+   "desc": "享受美食。每次吃东西心情都会变好。",
+   "descEn": "Enjoys eating. Mood is lifted every time this person gets to eat something."
+  },
+  "2082": {
+   "cn": "外星生物爱好者",
+   "en": "Alien lover",
+   "desc": "外星生物太令我着迷了！我看过所有与它们有关的电影和纪录片。",
+   "descEn": "I'm just fascinated with aliens! I have watched all the movies and documentaries of them."
+  }
+ },
+ "conditions": {
+  "193": "惊骇",
+  "194": "害怕",
+  "713": "冻伤",
+  "714": "一级烧伤",
+  "715": "受伤",
+  "751": "爆炸伤",
+  "1003": "被爬行怪咬伤",
+  "1033": "吃饭没有餐桌",
+  "1053": "感到有点饿",
+  "1058": "缺乏安全感。",
+  "1059": "睡在了地板上。",
+  "1060": "内急。",
+  "1061": "这艘飞船上太暗了。",
+  "1062": "吃了人肉。",
+  "1063": "穿着太空服",
+  "1064": "想去冒险。",
+  "1065": "感到人生很有意义。",
+  "1066": "感受到了爱意。",
+  "1096": "拉裤子了",
+  "1108": "失去意识",
+  "1109": "饥饿",
+  "1112": "氧气含量低",
+  "1118": "二氧化碳中毒",
+  "1119": "有害气体",
+  "1120": "浓烟警报",
+  "1121": "体温低",
+  "1122": "体温高",
+  "1123": "吃太多了",
+  "1124": "吃了怪物肉",
+  "1125": "吃了变质的食物",
+  "1127": "寂寞",
+  "1430": "被茧包裹",
+  "1550": "做了我喜爱的事情",
+  "1561": "黑眼窝",
+  "1563": "做了我不喜欢的事情",
+  "1581": "有点不舒服",
+  "1582": "不舒服",
+  "1583": "非常不舒服",
+  "1584": "有点缺乏安全感",
+  "1585": "担惊受怕",
+  "1586": "惊恐",
+  "1587": "感觉被人遗忘",
+  "1588": "感觉被孤立，感到孤独",
+  "1589": "感到彻底的孤独，没人喜欢",
+  "1590": "萎靡不振",
+  "1591": "疲惫不堪",
+  "1592": "筋疲力尽",
+  "1593": "感觉有点饿",
+  "1594": "感到饿",
+  "1595": "感觉非常饿",
+  "1596": "有些健康问题",
+  "1597": "令人担忧的健康问题",
+  "1598": "严重的健康问题",
+  "1600": "精神崩溃",
+  "1622": "听了个有趣的笑话",
+  "1623": "有人对我比较刻薄",
+  "1624": "得到安慰",
+  "1625": "表白被拒",
+  "1626": "有人感谢我",
+  "1648": "低温休眠",
+  "1649": "墙上的茧",
+  "1739": "厌倦穿太空服",
+  "1957": "受伤",
+  "2055": "休息中",
+  "2056": "正在医疗床上休息",
+  "2057": "伤口",
+  "2080": "被有关外星生物的噩梦侵扰",
+  "2081": "我曾当过俘虏。",
+  "2083": "斯德哥尔摩综合征",
+  "2246": "舒服地工作",
+  "2247": "正在舒服地休息",
+  "2248": "无法舒服地工作",
+  "2417": "俘虏招募",
+  "2482": "脑震荡",
+  "2490": "迷惑",
+  "2491": "食欲不振",
+  "2492": "失眠",
+  "2493": "无法工作",
+  "2494": "精神错乱",
+  "2495": "攻击性行为",
+  "2496": "精神分裂",
+  "2497": "摧毁欲",
+  "2498": "精神彻底崩溃",
+  "2499": "尝试过自杀",
+  "2500": "中毒",
+  "2512": "看到一个被关押的船员",
+  "2664": "反胃",
+  "2667": "缺蛋白质",
+  "2668": "缺脂肪酸",
+  "2669": "渴望碳水化合物",
+  "2670": "维生素缺乏性贫血",
+  "2728": "受伤",
+  "2729": "被喷气怪劈伤",
+  "2798": "受到了电击",
+  "2843": "我曾被囚禁作奴隶",
+  "3090": "手烧伤",
+  "3091": "把事情搞砸了",
+  "3092": "受伤",
+  "3093": "视力损伤",
+  "3094": "吸入有毒烟气",
+  "3095": "暴露在巨大的噪音下",
+  "3118": "孢子感染",
+  "3120": "孢子喷发",
+  "3121": "感到不适",
+  "3133": "慢性伤口",
+  "3136": "胳膊骨折",
+  "3137": "被击晕",
+  "3160": "失去意识",
+  "3164": "星际旅行病",
+  "3194": "拒绝工作（不舒服的环境）",
+  "3195": "我造过反（不舒服的环境）",
+  "3307": "还算舒适",
+  "3308": "比较舒适",
+  "3309": "非常舒适",
+  "3310": "不舒适的睡眠空间",
+  "3311": "睡眠环境舒适",
+  "3312": "不舒适的休闲空间",
+  "3313": "不错的休闲空间",
+  "3314": "美餐了一顿",
+  "3315": "感到悲伤",
+  "3321": "感到暴躁（轻度精神崩溃）",
+  "3322": "破坏性行为（重度精神崩溃）",
+  "3323": "纵火癖（重度精神崩溃）",
+  "3324": "睡觉被打扰（没有隐私）",
+  "3325": "独自安稳地睡了一觉",
+  "3327": "没有娱乐设施",
+  "3328": "幽闭恐惧症犯了（没有船体窗）",
+  "3329": "感觉充满活力",
+  "3330": "极度心烦意乱",
+  "3332": "和朋友畅聊了一翻",
+  "3333": "和一个好朋友分享了我的感受",
+  "3334": "和我的挚友心有灵犀",
+  "3335": "睡眠不足",
+  "3337": "心情不错",
+  "3338": "心情舒畅",
+  "3339": "心情极佳",
+  "3340": "没人可以说话",
+  "3341": "想念我的朋友",
+  "3342": "想念我的恋人",
+  "3343": "我的朋友死了",
+  "3344": "我最好的朋友死了",
+  "3345": "我的恋人死了",
+  "3346": "我觉得我的朋友可能死了",
+  "3347": "我觉得我的恋人可能死了",
+  "3348": "我的敌人不来烦我了",
+  "3349": "我觉得我的敌人可能死了",
+  "3350": "我的敌人死了",
+  "3351": "恐慌",
+  "3352": "罢工（轻度精神崩溃）",
+  "3353": "失去意识（重度精神崩溃）",
+  "3354": "破坏狂（极度精神崩溃）",
+  "3361": "没有装饰品",
+  "3368": "酗酒（轻度精神崩溃）",
+  "3369": "沉迷游戏（轻度精神崩溃）",
+  "3370": "烂醉（酒精）",
+  "3371": "宿醉（酒精）",
+  "3380": "失去了我的领导者",
+  "3385": "和恋人睡在一起",
+  "3440": "术后疲劳",
+  "3442": "术后休息",
+  "3445": "受伤",
+  "3446": "受伤",
+  "3447": "烧伤",
+  "3448": "受伤",
+  "3465": "康复加速",
+  "3467": "眩晕无力",
+  "3481": "进行了一段不愉快的对话",
+  "3660": "受伤",
+  "3699": "受伤",
+  "3700": "受伤",
+  "3927": "受ISP影响",
+  "3928": "ISP副作用：失眠",
+  "3929": "ISP副作用：颤抖",
+  "3930": "ISP副作用：食欲不振",
+  "3951": "感觉身体有异样",
+  "3952": "正在高级医疗床上休息",
+  "3971": "被击晕",
+  "4008": "疼痛",
+  "4010": "我服用了止痛药",
+  "4011": "我使用了战斗兴奋剂",
+  "4013": "药物副作用：失眠",
+  "4014": "药物副作用：颤抖",
+  "4015": "药物副作用：食欲不振",
+  "4016": "药物副作用：脑雾",
+  "4017": "药物副作用：忧郁",
+  "4018": "药物副作用：疲惫",
+  "4019": "药物副作用：焦虑",
+  "4021": "我服用了些情绪兴奋药剂",
+  "4023": "CSP阶段：极度亢奋",
+  "4026": "我摄入了一些外星生物酶",
+  "4034": "注射了镇静剂",
+  "4042": "CSP阶段：兴奋",
+  "4043": "CSP阶段：崩溃",
+  "4074": "我学习了",
+  "4075": "被火焰喷射器烧伤",
+  "4079": "一只外星寄生虫吸附在了我脸上",
+  "4080": "喉咙有瘀伤",
+  "4082": "有点缺乏安全感",
+  "4302": "海妖世界思维增幅",
+  "4303": "海妖世界后遗症",
+  "4633": "我接受了治疗",
+  "4644": "伤疤"
+ },
+ "attributes": {
+  "210": {
+   "cn": "勇气",
+   "en": "Bravery",
+   "type": "Bravery"
+  },
+  "212": {
+   "cn": "活力",
+   "en": "Zest",
+   "type": "Zest"
+  },
+  "213": {
+   "cn": "智慧",
+   "en": "Intelligence",
+   "type": "Intelligence"
+  },
+  "214": {
+   "cn": "感知",
+   "en": "Perception",
+   "type": "Perception"
+  }
+ },
+ "skills": {
+  "2": {
+   "cn": "开采",
+   "en": "Mining",
+   "key": "Mining",
+   "tid": "1414"
+  },
+  "3": {
+   "cn": "种植",
+   "en": "Botany",
+   "key": "Farming",
+   "tid": "1415"
+  },
+  "4": {
+   "cn": "建造",
+   "en": "Construct",
+   "key": "Construction",
+   "tid": "1416"
+  },
+  "5": {
+   "cn": "制造",
+   "en": "Industry",
+   "key": "Industry",
+   "tid": "1417"
+  },
+  "6": {
+   "cn": "医疗",
+   "en": "Medical",
+   "key": "Medical",
+   "tid": "1420"
+  },
+  "7": {
+   "cn": "炮手",
+   "en": "Gunner",
+   "key": "Gunner",
+   "tid": "1422"
+  },
+  "8": {
+   "cn": "护盾",
+   "en": "Shielding",
+   "key": "Shielding",
+   "tid": "1424"
+  },
+  "9": {
+   "cn": "操作",
+   "en": "Operations",
+   "key": "Comms",
+   "tid": "1425"
+  },
+  "10": {
+   "cn": "武器",
+   "en": "Weapons",
+   "key": "Weapons",
+   "tid": "1427"
+  },
+  "11": {
+   "cn": "None",
+   "en": "None",
+   "key": "None",
+   "tid": null
+  },
+  "12": {
+   "cn": "物流",
+   "en": "Logistics",
+   "key": "Logistics",
+   "tid": "1428"
+  },
+  "13": {
+   "cn": "化学",
+   "en": "Chemical",
+   "key": "Chemical",
+   "tid": "1421"
+  },
+  "14": {
+   "cn": "导航",
+   "en": "Navigation",
+   "key": "Navigation",
+   "tid": "1423"
+  },
+  "16": {
+   "cn": "研究",
+   "en": "Research",
+   "key": "Research",
+   "tid": "3851"
+  },
+  "22": {
+   "cn": "驾驶",
+   "en": "Piloting",
+   "key": "FighterPiloting",
+   "tid": "1413"
+  }
+ }
+}

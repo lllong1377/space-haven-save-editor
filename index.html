@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space Haven 存档修改器</title>
+<style>
+:root{
+  --bg:#f4f6f8; --card:#fff; --line:#e3e7ec; --text:#1f2933; --muted:#6b7785;
+  --accent:#0e7490; --accent-d:#155e75; --danger:#b42318; --warn:#b54708; --ok:#067647;
+  --chip:#eef2f5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text);
+  font:14px/1.55 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+header#top{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:16px;
+  padding:10px 18px;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap;
+}
+.brand{font-weight:650;letter-spacing:.3px;white-space:nowrap}
+.brand span{color:var(--accent);font-weight:700}
+.slot-wrap{display:flex;align-items:center;gap:8px;min-width:0;flex:1}
+select#slot{max-width:280px}
+.meta{color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acts{display:flex;gap:8px;align-items:center;margin-left:auto}
+.btn{
+  border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 12px;cursor:pointer;
+  transition:.12s;white-space:nowrap;
+}
+.btn:hover:not(:disabled){border-color:#c9d2db;background:#fafbfc}
+.btn:disabled{opacity:.45;cursor:default}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover:not(:disabled){background:var(--accent-d);border-color:var(--accent-d)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:3px 9px;font-size:13px}
+.btn.danger{color:var(--danger);border-color:#f2cfcc}
+.btn.danger:hover:not(:disabled){background:#fdf2f1}
+.count{display:inline-block;min-width:18px;text-align:center;background:var(--accent);color:#fff;
+  border-radius:9px;font-size:11px;padding:0 5px;margin-left:5px}
+#gamewarn{
+  background:#fff7ed;border:1px solid #fed7aa;color:var(--warn);border-radius:6px;
+  padding:4px 10px;font-size:12.5px;
+  flex:1 0 100%;order:9;box-sizing:border-box;margin-top:2px
+}
+nav#tabs{display:flex;gap:2px;padding:0 18px;background:#fff;border-bottom:1px solid var(--line);
+  position:sticky;top:var(--headerH,49px);z-index:19}
+nav#tabs button{
+  border:0;background:transparent;padding:10px 16px;cursor:pointer;color:var(--muted);
+  border-bottom:2px solid transparent
+}
+nav#tabs button.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+nav#tabs button:hover{color:var(--text)}
+main#view{padding:18px;max-width:1180px;margin:0 auto}
+h2.sec{font-size:15px;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
+h2.sec:first-child{margin-top:0}
+h2.sec .meta{font-weight:400}
+.badge{font-size:11.5px;padding:1px 7px;border-radius:10px;border:1px solid var(--line);
+  background:var(--chip);color:var(--muted)}
+.badge.me{background:#ecfdf5;border-color:#bbf7d0;color:var(--ok)}
+.badge.other{background:#fff7ed;border-color:#fed7aa;color:var(--warn)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:14px 16px;margin-bottom:12px}
+.card-h{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+.ident{display:flex;gap:8px;align-items:center}
+.ident input{width:120px}
+.ident .sep{color:var(--muted)}
+.status{margin-left:auto;color:var(--muted);font-size:12.5px}
+.status b{color:var(--text);font-weight:600}
+.grid{display:grid;grid-template-columns:210px 1fr;gap:18px}
+.grid .wide{grid-column:1/-1}
+.pane h4{margin:0 0 8px;font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.4px}
+.row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.row label{flex:1;min-width:0}
+.hint{color:var(--muted);cursor:help;font-size:11px;vertical-align:super}
+input[type=number],input[type=text],select{
+  border:1px solid var(--line);border-radius:5px;padding:4px 7px;background:#fff;width:100%
+}
+input[type=number]:focus,select:focus,input[type=text]:focus{outline:2px solid #cceef4;border-color:var(--accent)}
+input.n{width:74px;text-align:right}
+input.n.wide{width:92px}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);font-size:13.5px}
+th{color:var(--muted);font-weight:600;font-size:12px;background:#fafbfc}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chips-in{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{background:var(--chip);border:1px solid var(--line);border-radius:11px;padding:1px 9px;font-size:12.5px}
+.chip.ok{background:#ecfdf5;border-color:#bbf7d0;color:var(--ok)}
+.chip.warn{background:#fff7ed;border-color:#fed7aa;color:var(--warn)}
+.chip.danger{background:#fef3f2;border-color:#fecdca;color:var(--danger)}
+.chip.mut{color:var(--muted)}
+details.tr{border:1px solid var(--line);border-radius:6px;padding:6px 10px;background:#fff}
+details.tr summary{cursor:pointer;color:var(--accent);font-size:13px;user-select:none}
+.trlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:2px;margin-top:8px}
+.trlist label{display:flex;gap:6px;align-items:flex-start;padding:3px 4px;border-radius:5px;cursor:pointer;font-size:13px}
+.trlist label:hover{background:#f6fafb}
+.trlist .d{display:block;color:var(--muted);font-size:11.5px;line-height:1.35}
+.note{background:#f0f7f9;border:1px solid #d5e8ed;border-radius:7px;padding:8px 12px;
+  font-size:13px;color:#33555e;margin-bottom:14px}
+.note.warn{background:#fff7ed;border-color:#fed7aa;color:var(--warn)}
+.tools{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.tools input[type=text]{width:260px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin-bottom:12px}
+.box.sub{background:#fcfdfe}
+.box-h{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.tag{font-size:11.5px;padding:1px 8px;border-radius:4px;background:#e6f3f6;color:var(--accent);
+  border:1px solid #cce7ee;font-weight:600}
+.tag.sub{background:var(--chip);color:var(--muted);border-color:var(--line)}
+.box-h b{font-weight:600}
+.addrow{display:flex;gap:7px;align-items:center;margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+.addrow input[type=text]{width:210px}
+.addrow input.n{width:70px}
+.empty{color:var(--muted);font-size:13px;padding:6px 0 2px}
+.tools-bar{display:flex;gap:8px;align-items:center;justify-content:flex-end;margin-top:10px}
+textarea#rawText{width:100%;height:62vh;font:12px/1.5 Consolas,"Courier New",monospace;
+  border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff;white-space:pre}
+tr.strike td{color:var(--muted);text-decoration:line-through}
+td.added{background:#f0fdf4}
+aside#drawer{
+  position:fixed;top:0;right:0;width:390px;max-width:92vw;height:100vh;background:#fff;
+  border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(16,24,40,.08);z-index:40;
+  display:flex;flex-direction:column;transform:translateX(0);transition:.16s
+}
+aside#drawer[hidden]{display:none}
+aside#drawer h3{margin:0;padding:16px 18px;border-bottom:1px solid var(--line);font-size:15px;
+  display:flex;align-items:center;gap:8px}
+aside#drawer h3 .x{margin-left:auto;cursor:pointer;border:0;background:transparent;font-size:18px;
+  color:var(--muted);line-height:1}
+#pendList{list-style:none;margin:0;padding:8px 0;overflow:auto;flex:1}
+#pendList li{padding:8px 18px;border-bottom:1px solid #f2f4f7;font-size:13.5px;display:flex;gap:8px}
+#pendList li .k{color:var(--accent);font-size:11px;background:#e6f3f6;border-radius:4px;
+  padding:1px 5px;height:fit-content;white-space:nowrap}
+#pendList .none{color:var(--muted);padding:20px 18px}
+.drawer-acts{padding:12px 18px;border-top:1px solid var(--line);display:flex;gap:8px}
+.drawer-acts .btn{flex:1}
+#toast{
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(10px);
+  background:#1f2933;color:#fff;padding:9px 18px;border-radius:8px;font-size:13.5px;z-index:60;
+  opacity:0;pointer-events:none;transition:.2s;max-width:70vw;text-align:center
+}
+/* 页内遮罩层：确认框与设置窗共用 */
+.overlay{
+  position:fixed;inset:0;background:rgba(16,24,40,.38);z-index:80;
+  display:none;align-items:center;justify-content:center;padding:20px
+}
+.overlay.on{display:flex}
+.modal-box{
+  background:#fff;border-radius:10px;padding:18px 20px;width:430px;max-width:94vw;
+  box-shadow:0 16px 40px rgba(16,24,40,.22)
+}
+.modal-box.wide{width:640px}
+#modalMsg{font-size:14px;line-height:1.65;color:var(--text);white-space:pre-line;max-height:52vh;overflow:auto}
+.modal-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+.modal-box h3{margin:0 0 12px;font-size:15px}
+#cfgRoot{width:100%;margin-bottom:10px}
+#cfgCands{display:flex;flex-direction:column;gap:5px;max-height:170px;overflow:auto;margin-bottom:10px}
+#cfgCands .btn{text-align:left;white-space:normal;word-break:break-all}
+.cfg-hint{color:var(--muted);font-size:12.5px;line-height:1.6}
+.cfg-hint code{background:var(--chip);border-radius:4px;padding:0 4px}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.err{background:var(--danger)}
+#loading{position:fixed;inset:0;background:rgba(255,255,255,.7);z-index:70;display:none;
+  align-items:center;justify-content:center;font-size:14px;color:var(--muted)}
+#loading.on{display:flex}
+.kv{display:flex;gap:8px;align-items:baseline;font-size:13.5px;padding:5px 0}
+.kv .kk{width:170px;color:var(--muted)}
+.kv .vv{display:flex;gap:8px;align-items:center}
+.kv .vv input{width:130px}
+.sep-line{border:0;border-top:1px solid var(--line);margin:16px 0}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="brand">Space Haven <span>存档修改器</span></div>
+  <div class="slot-wrap">
+    <select id="slot"></select>
+    <span class="meta" id="fileinfo"></span>
+  </div>
+  <div id="gamewarn" hidden>检测到游戏正在运行：保存后请在游戏内重新载入，否则游戏的自动保存会覆盖修改。</div>
+  <div class="acts">
+    <button class="btn ghost" id="btnLang">EN</button>
+    <button class="btn ghost" id="btnConfig" title="更改存档所在目录（保存到本工具目录的 config.json）">存档目录</button>
+    <button class="btn ghost" id="btnReload">重新载入</button>
+    <button class="btn ghost" id="btnBackup">创建备份</button>
+    <button class="btn ghost" id="btnPending" disabled><span id="pendLabel">更改</span><span class="count" id="pendCount">0</span></button>
+    <button class="btn ghost" id="btnDiscard" disabled>放弃</button>
+    <button class="btn primary" id="btnSave" disabled>保存到存档</button>
+  </div>
+</header>
+
+<nav id="tabs">
+  <button data-tab="crew" class="on">船员</button>
+  <button data-tab="storage">仓库物品</button>
+  <button data-tab="bank">资金</button>
+  <button data-tab="raw">原始 XML</button>
+  <button data-tab="backup">备份</button>
+</nav>
+
+<main id="view"></main>
+
+<aside id="drawer" hidden>
+  <h3><span id="drawerTitle">待应用更改</span> <span id="dCount"></span><button class="x" id="dClose">✕</button></h3>
+  <ul id="pendList"></ul>
+  <div class="drawer-acts">
+    <button class="btn danger" id="dDiscard">放弃全部</button>
+    <button class="btn primary" id="dSave">保存到存档</button>
+  </div>
+</aside>
+
+<div id="toast"></div>
+<div id="loading">处理中…</div>
+
+<div id="modal" class="overlay">
+  <div class="modal-box">
+    <div id="modalMsg"></div>
+    <div class="modal-acts">
+      <button class="btn" id="modalNo">取消</button>
+      <button class="btn primary" id="modalOk">确认</button>
+    </div>
+  </div>
+</div>
+
+<div id="cfgModal" class="overlay">
+  <div class="modal-box wide">
+    <h3 id="cfgTitle">存档目录</h3>
+    <input type="text" id="cfgRoot" placeholder="savegames 目录的完整路径（选中后形如 …/savegames）" spellcheck="false">
+    <div id="cfgCands"></div>
+    <div class="cfg-hint" id="cfgHint">
+      需要形如 <code>&lt;槽位&gt;/save/game</code> 的目录结构（自动存档为 <code>&lt;槽位&gt;/autosave1/game</code>），
+      请手动选择或粘贴 savegames 目录本身（工具不会自动探测任何位置）。
+      备份始终保存在本工具目录的 <code>backups/</code> 下，不会写入游戏目录。
+    </div>
+    <div class="modal-acts">
+      <button class="btn" id="cfgCancel">取消</button>
+      <button class="btn primary" id="cfgSave">保存并重新载入</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+const $  = s => document.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const S = {saves:[], slot:null, model:null, defs:null, sha1:null, raw:null, rawDirty:false,
+           pending:new Map(), tab:'crew', busy:false, search:'',
+           lang: (function(){ try{ return localStorage.getItem('sh_lang')==='en' ? 'en' : 'zh'; }catch(_){ return 'zh'; } })()};
+
+/* ---------------- 双语 ---------------- */
+function t(zh, en){ return S.lang==='en' ? en : zh; }
+function dname(d){ return d ? (S.lang==='en' ? (d.en||d.cn) : (d.cn||d.en)) : ''; }
+function ddesc(d){ return d ? (S.lang==='en' ? (d.descEn||d.desc||'') : (d.desc||'')) : ''; }
+const STATUS_ZH = {Health:'生命', Food:'饱食', Rest:'休息', Comfort:'舒适', Mood:'心情'};
+function statusLabel(k){ return S.lang==='en' ? k : (STATUS_ZH[k]||k); }
+
+function applyStatic(){
+  document.documentElement.lang = S.lang==='en' ? 'en' : 'zh-CN';
+  document.title = t('Space Haven 存档修改器', 'Space Haven Save Editor');
+  const bs = document.querySelector('.brand span');
+  if(bs) bs.textContent = t('存档修改器', 'Save Editor');
+  $('#gamewarn').textContent = t(
+    '检测到游戏正在运行：保存后请在游戏内重新载入，否则游戏的自动保存会覆盖修改。',
+    'Game is running: reload the save in-game after saving, or the game autosave will overwrite your edits.');
+  const bl = $('#btnLang');
+  if(bl) bl.textContent = S.lang==='en' ? '中文' : 'EN';
+  const bc = $('#btnConfig');
+  bc.textContent = t('存档目录', 'Save Folder');
+  bc.title = t('更改存档所在目录（保存到本工具目录的 config.json）',
+               'Change the save folder (stored in config.json next to this tool)');
+  $('#btnReload').textContent = t('重新载入', 'Reload');
+  $('#btnBackup').textContent = t('创建备份', 'Backup');
+  $('#pendLabel').textContent = t('更改', 'Changes');
+  $('#btnDiscard').textContent = t('放弃', 'Discard');
+  $('#btnSave').textContent = t('保存到存档', 'Save to File');
+  const TABS = {crew:t('船员','Crew'), storage:t('仓库物品','Storage'), bank:t('资金','Funds'),
+                raw:t('原始 XML','Raw XML'), backup:t('备份','Backups')};
+  document.querySelectorAll('#tabs button[data-tab]').forEach(b=>{
+    if(TABS[b.dataset.tab]) b.textContent = TABS[b.dataset.tab];
+  });
+  const dt = $('#drawerTitle');
+  if(dt) dt.textContent = t('待应用更改', 'Pending Changes');
+  $('#dDiscard').textContent = t('放弃全部', 'Discard All');
+  $('#dSave').textContent = t('保存到存档', 'Save to File');
+  $('#loading').textContent = t('处理中…', 'Working…');
+  $('#modalNo').textContent = t('取消', 'Cancel');
+  $('#modalOk').textContent = t('确认', 'OK');
+  $('#cfgTitle').textContent = t('存档目录', 'Save Folder');
+  $('#cfgRoot').placeholder = t('savegames 目录的完整路径（选中后形如 …/savegames）',
+                                'Full path to the savegames folder (looks like …/savegames)');
+  $('#cfgHint').innerHTML = t(
+    '需要形如 <code>&lt;槽位&gt;/save/game</code> 的目录结构（自动存档为 <code>&lt;槽位&gt;/autosave1/game</code>），请选择 savegames 目录本身。检测结果仅供参考，也可直接粘贴其他路径。备份始终保存在本工具目录的 <code>backups/</code> 下，不会写入游戏目录。',
+    'The folder must look like <code>&lt;slot&gt;/save/game</code> (autosave is <code>&lt;slot&gt;/autosave1/game</code>); select the savegames folder itself. Detection results are advisory; you can also paste another path. Backups are always kept in <code>backups/</code> next to this tool and never written into the game folder.');
+  $('#cfgCancel').textContent = t('取消', 'Cancel');
+  $('#cfgSave').textContent = t('保存并重新载入', 'Save and Reload');
+}
+
+async function api(url, opt){
+  opt = opt || {};
+  const method = (opt.method || 'GET').toUpperCase();
+  let path = url;
+  let body = null;
+  if(typeof url === 'string' && url.indexOf('/api/') === 0){
+    if(method === 'GET'){
+      path += (url.indexOf('?')>=0 ? '&' : '?') + 'lang=' + S.lang;
+    }else{
+      try{
+        body = opt.body ? JSON.parse(opt.body) : {};
+        body.lang = S.lang;
+      }catch(_){ body = {}; }
+    }
+  }
+  // 原生窗口模式（pywebview）：不启动本地服务，直接调用本地引擎
+  if(window.pywebview && window.pywebview.api && window.pywebview.api.call){
+    try{
+      const j = await window.pywebview.api.call(method, path, body || {});
+      if(!j || !j.ok){
+        const e = new Error((j && j.error) || t('请求失败','Request failed'));
+        e.conflict = !!(j && j.conflict);
+        throw e;
+      }
+      return j;
+    }catch(err){
+      if(err && typeof err.conflict === 'boolean') throw err;
+      throw new Error(t('与本地引擎通信失败：', 'Failed to talk to the local engine: ') + ((err && err.message) || err));
+    }
+  }
+  // 服务模式（HTTP）回退
+  const r = await fetch(path, Object.assign({}, opt, body ? {body: JSON.stringify(body)} : {}));
+  const j = await r.json().catch(()=>({ok:false, error:t('响应解析失败','Failed to parse response')}));
+  if(!j.ok){
+    const e = new Error(j.error || t('请求失败：'+r.status, 'Request failed: '+r.status));
+    e.conflict = !!j.conflict;
+    throw e;
+  }
+  return j;
+}
+function loading(on){ $('#loading').classList.toggle('on', !!on); }
+/* 顶栏实际高度（含游戏运行警告条），供粘性页签定位 */
+function raf(fn){
+  if(typeof requestAnimationFrame === 'function') requestAnimationFrame(fn);
+  else setTimeout(fn, 0);
+}
+function syncHeaderH(){
+  const el = $('#top'); if(!el) return;
+  const h = el.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--headerH', Math.round(h) + 'px');
+}
+window.addEventListener('resize', ()=>raf(syncHeaderH));
+
+/* 页内确认框：返回 Promise<boolean>。内嵌预览环境会拦截原生 confirm，
+   若继续使用会出现「点了没反应」的静默失败，故全部改用此实现。 */
+let _askResolve = null;
+function ask(msg){
+  if(window.__askAnswer !== undefined && window.__askAnswer !== null){
+    return Promise.resolve(!!window.__askAnswer);
+  }
+  return new Promise(resolve=>{
+    if(_askResolve) _askEnd(false);   // 并发时先取消上一个，防止 resolver 被覆盖
+    _askResolve = resolve;
+    $('#modalMsg').textContent = msg;
+    $('#modal').classList.add('on');
+    $('#modalOk').focus();
+  });
+}
+function _askEnd(v){
+  const r = _askResolve;
+  _askResolve = null;
+  $('#modal').classList.remove('on');
+  if(r) r(v);
+}
+$('#modalOk').addEventListener('click', ()=>_askEnd(true));
+$('#modalNo').addEventListener('click', ()=>_askEnd(false));
+$('#modal').addEventListener('click', e=>{ if(e.target.id==='modal') _askEnd(false); });
+document.addEventListener('keydown', e=>{
+  if(!_askResolve) return;
+  if(e.key==='Escape'){ e.preventDefault(); _askEnd(false); }
+  if(e.key==='Enter'){ e.preventDefault(); _askEnd(true); }
+});
+let toastT;
+function toast(msg, err){
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.toggle('err', !!err);
+  t.classList.add('on');
+  clearTimeout(toastT);
+  toastT = setTimeout(()=>t.classList.remove('on'), err?4600:2600);
+}
+
+/* ---------------- 排队 / 状态 ---------------- */
+function setOp(key, op, desc){
+  const apply = ()=>{
+    if(!op) S.pending.delete(key);
+    else S.pending.set(key, {op, desc});
+    refreshHeader();
+    return true;
+  };
+  if(op && op.t!=='raw' && S.pending.has('raw')){
+    return ask(t('已有「整体替换 XML」待应用，继续将丢弃它。是否继续？',
+                 'A "replace whole XML" change is already staged and will be discarded. Continue?'))
+      .then(go=>{
+        if(!go) return false;
+        S.pending.delete('raw');
+        return apply();
+      });
+  }
+  return Promise.resolve(apply());
+}
+function clearPending(){ S.pending.clear(); refreshHeader(); }
+function refreshHeader(){
+  const n = S.pending.size;
+  $('#pendCount').textContent = n;
+  $('#btnPending').disabled = n===0;
+  $('#btnDiscard').disabled = n===0;
+  $('#btnSave').disabled = n===0 || S.busy;
+  renderDrawer();
+}
+function crewOf(s,c){ return S.model.ships[s].crew[c]; }
+function crewName(s,c){ const x=crewOf(s,c); return (x.name+' '+x.lname).trim() || ('#'+c); }
+function boxOf(i){ return S.model.containers[i]; }
+function itemName(eid){ const it = S.defs.items[String(eid)]; return it ? dname(it) : t('物品 ','Item ')+eid; }
+
+/* ---------------- 数据加载 ---------------- */
+async function init(){
+  try{
+    const s = await api('/api/saves');
+    S.saves = s.saves;
+    if(!S.saves.length){ $('#view').innerHTML = `<div class="note warn">${esc(t('未找到任何存档文件。','No save files found.'))}</div>`; return; }
+    $('#slot').innerHTML = S.saves.map(x=>`<option value="${esc(x.path)}">${esc(x.label)}</option>`).join('');
+    const pref = S.saves.find(x=>x.path==='long-2/save/game')
+              || S.saves.find(x=>x.path.endsWith('/save/game'))
+              || S.saves[0];
+    S.slot = pref.path;
+    $('#slot').value = S.slot;
+    const d = await api('/api/defs');
+    S.defs = d.defs;
+    await loadModel();
+  }catch(e){ toast(e.message, true); }
+}
+async function loadModel(){
+  loading(true);
+  try{
+    const m = await api('/api/model?p='+encodeURIComponent(S.slot));
+    S.model = m; S.sha1 = m.sha1; S.raw = null; S.rawDirty = false;
+    clearPending();
+    $('#fileinfo').textContent = `${m.mtime} · ${(m.size/1024).toFixed(0)} KB`;
+    $('#gamewarn').hidden = !m.gameRunning;
+    raf(syncHeaderH);
+    render();
+  }catch(e){ toast(e.message, true); }
+  finally{ loading(false); raf(syncHeaderH); }
+}
+
+/* ---------------- 渲染 ---------------- */
+function render(){
+  const v = $('#view');
+  if(!S.model){ v.innerHTML=''; return; }
+  if(S.tab==='crew')    v.innerHTML = renderCrew();
+  if(S.tab==='storage') v.innerHTML = renderStorage();
+  if(S.tab==='bank')    v.innerHTML = renderBank();
+  if(S.tab==='raw')     v.innerHTML = renderRaw();
+  if(S.tab==='backup')  v.innerHTML = renderBackup();
+  if(S.tab==='raw')     loadRawText();
+  if(S.tab==='backup')  loadBackups();
+  if(S.tab==='storage') applyFilter();
+}
+function pv(key, fallback){
+  const e = S.pending.get(key);
+  return e ? e.op.v !== undefined ? e.op.v : (e.op.ids!==undefined ? e.op.ids : fallback) : fallback;
+}
+const MAX_ATTR = 999, MAX_SKILL = 10;
+function maxKey(si, ci){ return `max:${si}:${ci}`; }
+function crewMax(si, ci){ return S.pending.has(maxKey(si, ci)); }
+/* 单项暂存优先；否则若该船员有「全满」暂存则显示满值 */
+function attrVal(si, ci, k, orig){ return S.pending.has(k) ? pv(k, orig) : (crewMax(si,ci) ? MAX_ATTR : orig); }
+/* 出现单项编辑时，把整条「全满」展开为单项暂存（跳过正在编辑的那项），保证不产生重复补丁 */
+function expandMax(s, c, skipAttr, skipSk){
+  if(!crewMax(s, c)) return;
+  S.pending.delete(maxKey(s, c));
+  const ck = crewOf(s, c), nm = crewName(s, c);
+  ck.attrs.forEach(x=>{
+    if(skipAttr!==undefined && String(x.id)===String(skipAttr)) return;
+    S.pending.set(`attr:${s}:${c}:${x.id}`,
+      {op:{t:'attr', s, c, id:x.id, v:MAX_ATTR},
+       desc:t(`船员 ${nm}：${x.name} → ${MAX_ATTR}`, `Crew ${nm}: ${x.name} → ${MAX_ATTR}`)});
+  });
+  ck.skills.forEach(x=>{
+    if(skipSk!==undefined && String(x.sk)===String(skipSk)) return;
+    S.pending.set(`skill:${s}:${c}:${x.sk}`,
+      {op:{t:'skill', s, c, sk:x.sk, level:MAX_SKILL, mxn:MAX_SKILL},
+       desc:t(`船员 ${nm}：${x.name} → ${MAX_SKILL}/${MAX_SKILL}`, `Crew ${nm}: ${x.name} → ${MAX_SKILL}/${MAX_SKILL}`)});
+  });
+}
+function traitChipsHtml(ids){
+  if(!ids || !ids.length) return `<span class="chip mut">${esc(t('无特质','No traits'))}</span>`;
+  return ids.map(id=>{
+    const d = S.defs.traits[String(id)];
+    return `<span class="chip" title="${esc(ddesc(d))}">${esc(d?dname(d):(t('未知特质 ','Unknown trait ')+id))}</span>`;
+  }).join('');
+}
+
+/* ---- 船员 ---- */
+function renderCrew(){
+  let any = false;
+  let h = `<div class="note">${esc(t('所有修改均为暂存状态，点击右上角「保存到存档」后才会写入文件；写入前自动备份原存档。属性范围 1-999，技能等级 0-10（依原帖说明）。',
+    'All edits are staged and only written when you click "Save to File" (top right); the original save is backed up automatically before writing. Attributes range 1-999, skill levels 0-10 (per the original guide).'))}</div>`;
+  S.model.ships.forEach((sh, si)=>{
+    if(!sh.crew.length) return;
+    any = true;
+    h += `<h2 class="sec">${esc(sh.sname)}
+      <span class="badge ${sh.isPlayer?'me':'other'}">${sh.isPlayer?esc(t('我的船','My ship')):esc(sh.owner||t('未知归属','Unknown owner'))}</span>
+      <span class="meta">${esc(t(`船员 ${sh.crew.length} 名`, `Crew: ${sh.crew.length}`))}</span></h2>`;
+    sh.crew.forEach((c,ci)=> h += crewCard(si, ci, c));
+  });
+  if(!any) h += `<div class="note warn">${esc(t('此存档中没有船员数据。','No crew data in this save.'))}</div>`;
+  return h;
+}
+function crewCard(si, ci, c){
+  const kn = `name:${si}:${ci}`, kl = `lname:${si}:${ci}`, kg = `gender:${si}:${ci}`;
+  const shuttleTitle = c.craft ? ((c.craft.cname
+      ? t(`穿梭机「${c.craft.cname}」`, `shuttle "${c.craft.cname}"`)
+      : t('穿梭机','shuttle'))
+    + (c.craft.id||c.craft.st
+        ? t(`（id ${c.craft.id||''}，状态 ${c.craft.st||''}）`, ` (id ${c.craft.id||''}, status ${c.craft.st||''})`)
+        : '')
+    + t('：该成员此刻在穿梭机/登陆艇上，不在船只人员名单里',
+        ': this member is currently on a shuttle/lander, not in the ship crew list')) : '';
+  let h = `<div class="card">
+   <div class="card-h">
+     <div class="ident">
+       <input type="text" data-k="name" data-s="${si}" data-c="${ci}" value="${esc(pv(kn,c.name))}" maxlength="40" title="${esc(t('名（原帖：搜索 name= 改此处）','Given name (guide: search name= and edit here)'))}">
+       <span class="sep">·</span>
+       <input type="text" data-k="lname" data-s="${si}" data-c="${ci}" value="${esc(pv(kl,c.lname))}" maxlength="40" title="${esc(t('姓（lname）','Surname (lname)'))}">
+       <span class="badge mut">id ${esc(c.cid)}</span>${c.craft?`<span class="badge other" title="${esc(shuttleTitle)}">${esc(t('穿梭机上','On shuttle'))}</span>`:''}
+     </div>
+     <label style="display:flex;gap:6px;align-items:center;color:var(--muted);font-size:13px">${esc(t('性别','Gender'))}
+       <select data-k="gender" data-s="${si}" data-c="${ci}" style="width:76px" title="${esc(t('存档中对应 bb / bh 属性','Maps to the bb / bh fields in the save'))}">
+         <option value="m"${pv(kg,c.gender)==='m'?' selected':''}>${esc(t('男','Male'))}</option>
+         <option value="f"${pv(kg,c.gender)==='f'?' selected':''}>${esc(t('女','Female'))}</option>
+       </select></label>
+     <button class="btn sm maxbtn" data-k="maxcrew" data-s="${si}" data-c="${ci}"
+       title="${esc(t(`把该船员全部属性设为 ${MAX_ATTR}、全部技能等级与上限设为 ${MAX_SKILL}（暂存，需点「保存到存档」）`,
+                      `Set all attributes of this crew member to ${MAX_ATTR} and all skill levels and caps to ${MAX_SKILL} (staged; click "Save to File" to apply)`))}">${esc(t('属性·技能全满','Max All'))}</button>
+     <div class="status">${c.status.map(p=>`${esc(statusLabel(p.key))} <b>${esc(p.v)}</b>`).join(' · ')}
+       <span class="hint" title="${esc(t('数值直接读取自存档 props 区块，仅作查看','Values are read directly from the save props block; view only'))}">ⓘ</span></div>
+   </div>
+   <div class="grid">
+     <div class="pane"><h4>${esc(t('基础属性','Attributes'))}</h4>`;
+
+  c.attrs.forEach(a=>{
+    const k = `attr:${si}:${ci}:${a.id}`;
+    const cur = attrVal(si, ci, k, a.points);
+    h += `<div class="row"><label>${esc(a.name)}${a.known?'':` <span class="chip warn">${esc(t('未知','Unknown'))}</span>`}</label>
+      <input class="n" type="number" min="1" max="999" data-k="attr" data-s="${si}" data-c="${ci}" data-id="${esc(a.id)}" value="${esc(cur)}" title="${esc(t('范围 1-999（原帖说明）','Range 1-999 (per the guide)'))}">
+      <span class="hint" title="${esc(t(`存档属性 id=${a.id}`,`Save attribute id=${a.id}`))}">ⓘ</span></div>`;
+  });
+
+  h += `</div><div class="pane"><h4>${esc(t('技能','Skills'))}<span class="hint" title="${esc(t('level = 当前等级，mxn = 上限，范围 0-10','level = current level, mxn = cap; range 0-10'))}">ⓘ</span></h4>
+    <table><thead><tr><th>${esc(t('技能','Skill'))}</th><th class="n" style="width:96px">${esc(t('等级','Level'))}</th><th class="n" style="width:96px">${esc(t('上限','Cap'))}</th></tr></thead><tbody>`;
+  c.skills.forEach(sk=>{
+    const k = `skill:${si}:${ci}:${sk.sk}`;
+    const e = S.pending.get(k);
+    const on = crewMax(si, ci);
+    const lv = e ? e.op.level : (on ? MAX_SKILL : sk.level);
+    const mx = e ? e.op.mxn    : (on ? MAX_SKILL : sk.mxn);
+    h += `<tr><td>${esc(sk.name)}${sk.known?'':` <span class="chip warn">${esc(t('未知','Unknown'))}</span>`}</td>
+      <td class="n"><input class="n" type="number" min="0" max="10" data-k="skill" data-s="${si}" data-c="${ci}" data-sk="${esc(sk.sk)}" data-f="level" value="${esc(lv)}"></td>
+      <td class="n"><input class="n" type="number" min="0" max="10" data-k="skill" data-s="${si}" data-c="${ci}" data-sk="${esc(sk.sk)}" data-f="mxn" value="${esc(mx)}"></td></tr>`;
+  });
+  h += `</tbody></table></div>`;
+
+  // 特质
+  const kt = `traits:${si}:${ci}`;
+  const chosen = pv(kt, c.traits.map(x=>x.id));
+  h += `<div class="pane wide"><h4>${esc(t('特质（大灾变后）','Traits (post-Cataclysm)'))}<span class="hint" title="${esc(t('存档 traits 区块；原帖给出 191 英雄 / 656 笨拙 / 1035 聪明 / 1044 意志坚强 / 1048 迷人 / 1533 铁胃',
+    'Save traits block; the guide highlights 191 Hero / 656 Clumsy / 1035 Smart / 1044 Strong-willed / 1048 Charming / 1533 Iron Stomach'))}">ⓘ</span></h4>
+    <div class="chips" style="margin-bottom:8px"><span class="chips-in" id="chin-${si}-${ci}">${traitChipsHtml(chosen)}</span></div>`;
+  h += `<details class="tr"><summary>${esc(t('编辑特质','Edit traits'))}</summary><div class="trlist">`;
+  Object.keys(S.defs.traits).forEach(id=>{
+    const d = S.defs.traits[id];
+    const on = chosen.indexOf(id)>=0 || chosen.indexOf(Number(id))>=0;
+    h += `<label title="${esc(ddesc(d))}"><input type="checkbox" data-k="trait" data-s="${si}" data-c="${ci}" data-id="${esc(id)}"${on?' checked':''}>
+      <span>${esc(dname(d)||(t('特质 ','Trait ')+id))}<span class="d">${esc(id)}</span></span></label>`;
+  });
+  h += `</div></details></div></div></div>`;
+  return h;
+}
+
+/* ---- 仓库 ---- */
+function renderStorage(){
+  const st = S.model.containerStats;
+  const stor = S.model.containers.filter(b=>b.kind==='storage');
+  const dev  = S.model.containers.filter(b=>b.kind!=='storage');
+  let h = `<div class="note">${esc(t('原帖提示：空容器可能是地图上的其他船只或太空站，修改前请核对所属船只与坐标。修改暂存后需点「保存到存档」。',
+    'Guide tip: empty containers may be other ships or space stations on the map; verify the owning ship and coordinates before editing. Staged edits require clicking "Save to File".'))}</div>
+  <div class="tools">
+    <input type="text" id="search" placeholder="${esc(t('搜索物品名称 / ID / 船名 / 坐标','Search item name / ID / ship / coordinates'))}" value="${esc(S.search)}">
+    <span class="meta">${esc(t(`共 ${st.total} 个容器（货箱 ${st.storage} 个）· ${st.items} 件物品`,
+                              `${st.total} containers (${st.storage} cargo boxes) · ${st.items} items`))}</span>
+  </div><div id="boxes">`;
+  stor.forEach(b=> h += boxHtml(b));
+  h += `</div><details style="margin-top:6px"><summary style="cursor:pointer;color:var(--muted);font-size:13.5px">${esc(t(`设备内部容器（${dev.length} 个：生产、种植、引擎、医疗等缓冲区）`,
+    `Device internal containers (${dev.length}: production, farming, engine, medical buffers)`))}</summary><div style="margin-top:10px">`;
+  dev.forEach(b=> h += boxHtml(b));
+  h += `</div></details>
+  <datalist id="itemlist">` +
+    Object.keys(S.defs.items).map(id=>{
+      const it = S.defs.items[id];
+      return `<option value="${esc(id)} ${esc(dname(it))}"></option>`;
+    }).join('') + `</datalist>`;
+  return h;
+}
+function boxHtml(b){
+  const kbase = `item:${b.idx}:`;
+  const pend = [...S.pending.entries()].filter(([k])=>k.startsWith(kbase));
+  const rows = [];
+  b.items.forEach(it=>{
+    const key = kbase + it.eid;
+    const e = S.pending.get(key);
+    if(e && e.op.mode==='del'){
+      rows.push(`<tr class="strike"><td>${esc(it.name)}</td><td class="n">${esc(it.eid)}</td>
+        <td class="n">${it.qty}</td><td style="width:70px" class="n"><span class="chip danger">${esc(t('将删除','Will delete'))}</span></td></tr>`);
+      return;
+    }
+    const qty = e ? e.op.qty : it.qty;
+    rows.push(`<tr><td>${esc(it.name)}${it.known?'':` <span class="chip warn">${esc(t('未知ID','Unknown ID'))}</span>`}
+        ${it.wi?`<span class="chip mut" title="onTheWayIn">${esc(t('在途入 '+it.wi,'In transit in '+it.wi))}</span>`:''}
+        ${it.wo?`<span class="chip mut" title="onTheWayOut">${esc(t('在途出 '+it.wo,'In transit out '+it.wo))}</span>`:''}</td>
+      <td class="n">${esc(it.eid)}</td>
+      <td class="n"><input class="n" type="number" min="0" max="1000000" data-k="qty" data-b="${b.idx}" data-eid="${esc(it.eid)}" value="${esc(qty)}"></td>
+      <td class="n"><button class="btn sm danger" data-k="del" data-b="${b.idx}" data-eid="${esc(it.eid)}">${esc(t('删除','Delete'))}</button></td></tr>`);
+  });
+  pend.forEach(([k,e])=>{
+    if(e.op.mode!=='add') return;
+    if(b.items.some(i=>i.eid===String(e.op.eid))) return;
+    rows.push(`<tr class="added"><td>${esc(itemName(e.op.eid))} <span class="chip ok">${esc(t('将添加','Will add'))}</span></td>
+      <td class="n">${esc(e.op.eid)}</td><td class="n">${esc(e.op.qty)}</td>
+      <td class="n"><button class="btn sm" data-k="unadd" data-b="${b.idx}" data-eid="${esc(e.op.eid)}">${esc(t('撤销','Undo'))}</button></td></tr>`);
+  });
+  const hay = [b.label, b.where, b.objId||'', b.x||'', b.y||'',
+    b.items.map(i=>i.name+' '+i.eid).join(' ')].join(' ').toLowerCase();
+  const head = `<div class="box ${b.kind==='storage'?'':'sub'}" data-hay="${esc(hay)}">
+    <div class="box-h">
+      <span class="tag ${b.kind==='storage'?'':'sub'}">${esc(b.label)}</span>
+      <b>${esc(b.where)}</b>
+      ${b.objId?`<span class="meta">${esc(t('对象#','Object #'))}${esc(b.objId)}${b.x?` · (${esc(b.x)}, ${esc(b.y)})`:''}</span>`:''}
+      ${b.eatAllowed==='1'?`<span class="chip ok">${esc(t('允许生食','Raw food allowed'))}</span>`:(b.eatAllowed==='0'?`<span class="chip">${esc(t('禁止生食','No raw food'))}</span>`:'')}
+      ${b.empty?`<span class="chip warn">${esc(t('空容器','Empty container'))}</span>`:''}
+      ${b.isPlayerShip?'':`<span class="chip danger">${esc(t('非我方船只','Not our ship'))}</span>`}
+    </div>`;
+  let body;
+  if(rows.length){
+    body = `<table><thead><tr><th>${esc(t('物品','Item'))}</th><th class="n" style="width:80px">ID</th>
+      <th class="n" style="width:120px">${esc(t('数量','Qty'))}</th><th class="n" style="width:76px"></th></tr></thead>
+      <tbody>${rows.join('')}</tbody></table>`;
+  }else{
+    body = `<div class="empty">${esc(t('空容器','Empty container'))}${b.kind==='storage'?esc(t('（原帖提醒：确认是否为本船货箱，避免改到地图上的其他船只/太空站）',
+      ' (guide: confirm it is this ship\'s cargo box, to avoid editing other ships/stations on the map)')):''}</div>`;
+  }
+  body += `<div class="addrow">${esc(t('添加：','Add:'))}
+      <input type="text" list="itemlist" data-add-eid="${b.idx}" placeholder="${esc(t('如 157 基础金属 或 157','e.g. 157 Base Metals or 157'))}">
+      <input class="n" type="number" min="1" max="1000000" data-add-qty="${b.idx}" value="10">
+      <button class="btn sm" data-k="add" data-b="${b.idx}">${esc(t('添加','Add'))}</button></div>`;
+  return head + body + `</div>`;
+}
+function applyFilter(){
+  const q = (S.search || ($('#search') && $('#search').value) || '').trim().toLowerCase();
+  document.querySelectorAll('#boxes .box, details[open] .box').forEach(el=>{
+    const hay = el.dataset.hay || '';
+    el.style.display = (!q || hay.indexOf(q) >= 0) ? '' : 'none';
+  });
+}
+
+/* ---- 资金 ---- */
+function renderBank(){
+  const b = S.model.bank;
+  const F = {
+    ca:   [t('信用点 ca','Credits ca'), t('原帖所指的货币字段','The currency field referenced by the guide')],
+    cr:   [t('预留信用点 cr','Reserved credits cr'), 'TradingHelper$Bank.creditsReserved'],
+    slp:  ['slp', t('游戏内部字段，原帖未涉及，谨慎修改','Internal field, not covered by the guide; edit with care')],
+    blp:  ['blp', t('游戏内部字段，原帖未涉及，谨慎修改','Internal field, not covered by the guide; edit with care')],
+    spmd: ['spmd', t('游戏内部字段，原帖未涉及，谨慎修改','Internal field, not covered by the guide; edit with care')],
+  };
+  let h = `<div class="note">${t('原帖写法：搜索 <code>playerBank s="Player"</code> 后修改 <code>ca="货币量"</code>。此处等价，但会先备份再写入。',
+    'Guide method: search <code>playerBank s="Player"</code> and edit <code>ca="amount"</code>. This page is equivalent, but backs up before writing.')}</div>
+  <div class="card"><h4 style="margin:0 0 10px;font-size:12.5px;color:var(--muted)">playerBank</h4>`;
+  S.model.bankFields.forEach(f=>{
+    if(f==='s') return;
+    const meta = F[f] || [f, t('游戏内部字段','Internal field')];
+    const k = 'bank:'+f;
+    h += `<div class="kv"><div class="kk">${esc(meta[0])}<span class="hint" title="${esc(meta[1])}"> ⓘ</span></div>
+      <div class="vv"><input class="n wide" type="number" min="0" max="2000000000" data-k="bank" data-f="${esc(f)}" value="${esc(pv(k, b[f]||'0'))}"></div></div>`;
+  });
+  h += `</div>`;
+  return h;
+}
+
+/* ---- 原始 XML ---- */
+function renderRaw(){
+  return `<div class="note">${esc(t('与原帖相同的编辑方式：直接修改 XML 文本。保存时会整体替换存档文件，因此不会与其它暂存修改并存。',
+    'Same editing approach as the guide: edit the XML text directly. Saving replaces the whole save file, so it cannot coexist with other staged changes.'))}</div>
+  <div class="tools">
+    <button class="btn sm" id="rawReload">${esc(t('重新读取','Reload'))}</button>
+    <button class="btn sm" id="rawCopy">${esc(t('复制到剪贴板','Copy to clipboard'))}</button>
+    <button class="btn sm primary" id="rawQueue">${esc(t('把文本框内容加入更改','Queue textarea as change'))}</button>
+    <span class="meta" id="rawInfo"></span>
+  </div>
+  <textarea id="rawText" spellcheck="false"></textarea>`;
+}
+async function loadRawText(){
+  try{
+    const r = await api('/api/raw?p='+encodeURIComponent(S.slot));
+    S.raw = r.text; S.rawDirty = false;
+    const ta = $('#rawText'); if(ta) ta.value = r.text;
+    const i = $('#rawInfo'); if(i) i.textContent = `${(r.text.length/1024).toFixed(0)} KB · sha1 ${r.sha1.slice(0,10)}…`;
+  }catch(e){ toast(e.message, true); }
+}
+
+/* ---- 备份 ---- */
+function renderBackup(){
+  return `<div class="note">${t('备份保存在本工具目录的 <code>backups/</code> 下，按存档槽位分组，不会写入游戏目录。',
+    'Backups are kept in <code>backups/</code> next to this tool, grouped by save slot, and never written into the game folder.')}</div>
+  <div class="tools"><button class="btn sm" id="bakNow">${esc(t('立即创建备份','Create backup now'))}</button>
+  <button class="btn sm" id="bakRefresh">${esc(t('刷新列表','Refresh'))}</button></div>
+  <div class="card"><table><thead><tr><th>${esc(t('备份文件','Backup file'))}</th><th style="width:170px">${esc(t('时间','Time'))}</th>
+  <th class="n" style="width:90px">${esc(t('大小','Size'))}</th><th class="n" style="width:150px"></th></tr></thead>
+  <tbody id="bakRows"><tr><td colspan="4" class="empty">${esc(t('读取中…','Loading…'))}</td></tr></tbody></table></div>`;
+}
+async function loadBackups(){
+  try{
+    const r = await api('/api/backups?p='+encodeURIComponent(S.slot));
+    const rows = r.backups.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.mtime)}</td>
+      <td class="n">${(x.size/1024).toFixed(0)} KB</td>
+      <td class="n"><button class="btn sm" data-k="restore" data-name="${esc(x.name)}">${esc(t('恢复','Restore'))}</button></td></tr>`);
+    $('#bakRows').innerHTML = rows.length ? rows.join('')
+      : `<tr><td colspan="4" class="empty">${esc(t('暂无备份','No backups yet'))}</td></tr>`;
+  }catch(e){ $('#bakRows').innerHTML = `<tr><td colspan="4" class="empty">${esc(e.message)}</td></tr>`; }
+}
+
+/* ---- 待应用更改抽屉 ---- */
+function renderDrawer(){
+  $('#dCount').textContent = S.pending.size ? t(`（${S.pending.size}）`, ` (${S.pending.size})`) : '';
+  const ul = $('#pendList');
+  if(!S.pending.size){ ul.innerHTML = `<li class="none">${esc(t('暂无更改。修改表单后会出现在这里。','No changes yet. Edit a form and it will appear here.'))}</li>`; return; }
+  const TAG = {name:t('名','Name'), lname:t('姓','Surname'), gender:t('性别','Gender'), attr:t('属性','Attr'),
+               traits:t('特质','Traits'), skill:t('技能','Skill'), bank:t('资金','Funds'),
+               item:t('物品','Item'), raw:'XML', max:t('全满','Max All')};
+  ul.innerHTML = [...S.pending.entries()].map(([k,e])=>
+    `<li><span class="k">${esc(TAG[e.op.t]||e.op.t)}</span><span>${esc(e.desc)}</span></li>`).join('');
+}
+
+/* ---------------- 事件 ---------------- */
+$('#tabs').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-tab]'); if(!b) return;
+  S.tab = b.dataset.tab;
+  document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on', x===b));
+  render();
+});
+$('#slot').addEventListener('change', async e=>{
+  S.slot = e.target.value;
+  await loadModel();
+});
+$('#btnReload').addEventListener('click', async ()=>{
+  if(S.pending.size && !(await ask(t('放弃所有未保存的更改并重新载入？','Discard all unsaved changes and reload?')))) return;
+  await loadModel();
+});
+
+/* ---- 语言切换 ---- */
+$('#btnLang').addEventListener('click', async ()=>{
+  S.lang = S.lang==='en' ? 'zh' : 'en';
+  try{ localStorage.setItem('sh_lang', S.lang); }catch(_){}
+  applyStatic();
+  const keep = new Map(S.pending);
+  const rawKeep = S.raw, rawDirtyKeep = S.rawDirty;
+  await loadModel();            // 重新拉取服务端按语言渲染的模型（名称等）
+  S.pending = keep;             // 保留未应用的更改
+  if(S.raw===null && rawKeep!==null){ S.raw = rawKeep; S.rawDirty = rawDirtyKeep; }
+  refreshHeader();
+});
+
+/* ---- 存档目录设置 ---- */
+async function openConfig(){
+  try{
+    const c = await api('/api/config');
+    $('#cfgRoot').value = c.root || '';
+    const box = $('#cfgCands');
+    box.innerHTML = '';
+    $('#cfgModal').classList.add('on');
+    $('#cfgRoot').focus();
+  }catch(e){ toast(e.message, true); }
+}
+$('#btnConfig').addEventListener('click', openConfig);
+$('#cfgCancel').addEventListener('click', ()=>{ $('#cfgModal').classList.remove('on'); });
+$('#cfgModal').addEventListener('click', e=>{
+  if(e.target.id === 'cfgModal') $('#cfgModal').classList.remove('on');
+});
+$('#cfgSave').addEventListener('click', async ()=>{
+  const root = ($('#cfgRoot').value || '').trim();
+  if(!root){ toast(t('请先填写存档目录','Please enter the save folder first'), true); return; }
+  try{
+    const r = await api('/api/config', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({root})});
+    $('#cfgModal').classList.remove('on');
+    toast(r.note || (t('存档目录已更新：','Save folder updated: ') + r.root));
+    if(r.applied){
+      S.slot = null;
+      clearPending();
+      await init();
+    }
+  }catch(e){ toast(e.message, true); }
+});
+$('#btnBackup').addEventListener('click', async ()=>{
+  try{ const r = await api('/api/backup', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({p:S.slot})});
+    toast(t('已创建备份：','Backup created: ')+r.backup.name);
+    if(S.tab==='backup') loadBackups();
+  }catch(e){ toast(e.message, true); }
+});
+$('#btnPending').addEventListener('click', ()=>{ $('#drawer').hidden = false; });
+$('#dClose').addEventListener('click', ()=>{ $('#drawer').hidden = true; });
+async function discard(){
+  if(!S.pending.size) return;
+  if(!(await ask(t(`放弃全部 ${S.pending.size} 项未保存更改？`, `Discard all ${S.pending.size} unsaved change(s)?`)))) return;
+  clearPending(); render(); $('#drawer').hidden = true;
+}
+$('#btnDiscard').addEventListener('click', discard);
+$('#dDiscard').addEventListener('click', discard);
+
+async function applyAll(){
+  const ops = [...S.pending.values()].map(e=>e.op);
+  if(!ops.length || S.busy) return;
+  const go = await ask(t(`将写入 ${ops.length} 项修改到存档\n\n文件：${S.slot}\n写入前会自动创建备份。`,
+                         `Write ${ops.length} change(s) to the save file?\n\nFile: ${S.slot}\nA backup is created automatically before writing.`));
+  if(!go){ toast(t('已取消写入','Write cancelled')); return; }
+  S.busy = true; refreshHeader(); loading(true);
+  try{
+    const r = await api('/api/apply', {method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({p:S.slot, sha1:S.sha1, ops})});
+    await loadModel();
+    $('#drawer').hidden = true;
+    toast(t('已写入存档 · 备份：','Saved to file · backup: ') + r.backup.name);
+  }catch(e){
+    toast(e.message, true);
+    if(e.conflict && await ask(t('存档已被游戏修改。是否重新载入？（未保存更改将丢失）',
+                                 'The save was modified by the game. Reload it? (Unsaved changes will be lost)'))) await loadModel();
+  }finally{
+    S.busy = false; loading(false); refreshHeader();
+  }
+}
+$('#btnSave').addEventListener('click', applyAll);
+$('#dSave').addEventListener('click', applyAll);
+
+/* 表单变更 */
+$('#view').addEventListener('change', e=>{
+  const el = e.target, k = el.dataset.k;
+  if(!k || !S.model) return;
+  Promise.resolve().then(()=>handleField(k, el)).catch(err=>toast(err.message||String(err), true));
+});
+$('#view').addEventListener('click', e=>{
+  const el = e.target.closest('[data-k]'); if(!el || el.tagName==='INPUT'||el.tagName==='SELECT') return;
+  const k = el.dataset.k;
+  if(!S.model) return;
+  Promise.resolve().then(()=>handleClick(k, el)).catch(err=>toast(err.message||String(err), true));
+});
+$('#view').addEventListener('input', e=>{
+  if(e.target.id==='search'){ S.search = e.target.value; applyFilter(); }
+});
+/* 展开「设备内部容器」等 details 时重新套用过滤 */
+$('#view').addEventListener('toggle', e=>{
+  if(e.target.tagName==='DETAILS') applyFilter();
+}, true);
+
+async function handleField(k, el){
+  const s = +el.dataset.s, c = +el.dataset.c;
+  if(k==='name' || k==='lname'){
+    const orig = crewOf(s,c)[k], v = el.value;
+    if(!v.trim()){ el.value = orig; toast(t('名字不能为空','Name cannot be empty'), true); return; }
+    const same = v===orig;
+    if(!(await setOp(`${k}:${s}:${c}`, same?null:{t:k, s, c, v},
+      k==='name' ? t(`船员 ${crewName(s,c)}：改名为「${v}」`, `Crew ${crewName(s,c)}: rename to "${v}"`)
+                 : t(`船员 ${crewName(s,c)}：改姓为「${v}」`, `Crew ${crewName(s,c)}: change surname to "${v}"`))))
+      { el.value = orig; return; }
+    return;
+  }
+  if(k==='gender'){
+    const orig = crewOf(s,c).gender, v = el.value;
+    if(!(await setOp(`gender:${s}:${c}`, v===orig?null:{t:'gender', s, c, v},
+      t(`船员 ${crewName(s,c)}：性别改为${v==='m'?'男':'女'}`,
+        `Crew ${crewName(s,c)}: gender → ${v==='m'?'male':'female'}`))))
+      { el.value = orig; return; }
+    return;
+  }
+  if(k==='attr'){
+    const a = crewOf(s,c).attrs.find(x=>x.id===el.dataset.id);
+    const ak = `attr:${s}:${c}:${a.id}`;
+    const v = Number(el.value);
+    if(!(v>=1 && v<=MAX_ATTR)){ el.value = attrVal(s,c,ak,a.points); toast(t('属性范围 1-999','Attribute range is 1-999'), true); return; }
+    expandMax(s, c, a.id, undefined);
+    const same = v===a.points;
+    if(!(await setOp(ak, same?null:{t:'attr', s, c, id:a.id, v},
+      t(`船员 ${crewName(s,c)}：${a.name} ${a.points} → ${v}`, `Crew ${crewName(s,c)}: ${a.name} ${a.points} → ${v}`))))
+      { el.value = attrVal(s,c,ak,a.points); return; }
+    return;
+  }
+  if(k==='skill'){
+    const row = crewOf(s,c).skills.find(x=>x.sk===el.dataset.sk);
+    const skKey = `skill:${s}:${c}:${row.sk}`;
+    const inputs = [...document.querySelectorAll(`input[data-k="skill"][data-s="${s}"][data-c="${c}"][data-sk="${row.sk}"]`)];
+    const vals = {};
+    inputs.forEach(i=> vals[i.dataset.f] = Number(i.value));
+    const bad = Object.values(vals).some(v=>!(v>=0 && v<=10));
+    if(bad){ inputs.forEach((i,ix)=>{ if(!(Number(i.value)>=0&&Number(i.value)<=10)) i.value = ix?row.mxn:row.level; });
+      toast(t('技能范围 0-10','Skill range is 0-10'), true); return; }
+    expandMax(s, c, undefined, row.sk);
+    const same = vals.level===row.level && vals.mxn===row.mxn;
+    if(!(await setOp(skKey, same?null:{t:'skill', s, c, sk:row.sk, level:vals.level, mxn:vals.mxn},
+      t(`船员 ${crewName(s,c)}：${row.name} 等级 ${row.level} → ${vals.level}，上限 ${row.mxn} → ${vals.mxn}`,
+        `Crew ${crewName(s,c)}: ${row.name} level ${row.level} → ${vals.level}, cap ${row.mxn} → ${vals.mxn}`)))){
+      inputs[0].value = row.level; inputs[1].value = row.mxn; return; }
+    return;
+  }
+  if(k==='trait'){
+    const boxes = [...document.querySelectorAll(`input[data-k="trait"][data-s="${s}"][data-c="${c}"]`)];
+    const ids = boxes.filter(b=>b.checked).map(b=>b.dataset.id);
+    const orig = crewOf(s,c).traits.map(x=>String(x.id));
+    const same = ids.length===orig.length && ids.every((x,i)=>String(x)===orig[i]);
+    const names = ids.map(id=>dname(S.defs.traits[id])||id);
+    const okT = await setOp(`traits:${s}:${c}`, same?null:{t:'traits', s, c, ids},
+      t(`船员 ${crewName(s,c)}：特质设为${names.length?names.join('、'):'（清空）'}`,
+        `Crew ${crewName(s,c)}: traits set to ${names.length?names.join(', '):'(cleared)'}`));
+    if(!okT){ render(); return; }
+    // 只更新 chips 展示，不整页重绘（避免 details 折叠状态丢失）
+    const chin = document.getElementById(`chin-${s}-${c}`);
+    if(chin) chin.innerHTML = traitChipsHtml(pv(`traits:${s}:${c}`, orig));
+    return;
+  }
+  if(k==='qty'){
+    const b = boxOf(+el.dataset.b), eid = el.dataset.eid;
+    const it = b.items.find(x=>x.eid===eid);
+    const v = Number(el.value);
+    if(!(v>=0 && v<=1000000)){ el.value = it.qty; toast(t('数量范围 0-1000000','Quantity range is 0-1000000'), true); return; }
+    const same = v===it.qty;
+    if(!(await setOp(`item:${b.idx}:${eid}`, same?null:{t:'item', box:b.idx, eid, mode:'set', qty:v},
+      t(`${b.label} · ${b.where}：${it.name} 数量 ${it.qty} → ${v}`,
+        `${b.label} · ${b.where}: ${it.name} qty ${it.qty} → ${v}`))))
+      { el.value = it.qty; return; }
+    return;
+  }
+  if(k==='bank'){
+    const f = el.dataset.f, orig = String(pv('bank:'+f, S.model.bank[f] || '0'));
+    const v = Number(el.value);
+    if(!(v>=0 && v<=2000000000)){ el.value = orig; toast(t('数值范围 0 - 20亿','Value range is 0 - 2,000,000,000'), true); return; }
+    const same = String(v)===String(orig);
+    if(!(await setOp(`bank:${f}`, same?null:{t:'bank', f, v},
+      t(`资金：${f} ${orig} → ${v}`, `Funds: ${f} ${orig} → ${v}`))))
+      { el.value = orig; return; }
+    return;
+  }
+}
+async function handleClick(k, el){
+  if(k==='maxcrew'){
+    const s = +el.dataset.s, c = +el.dataset.c;
+    const ck = crewOf(s, c);
+    const allFull = ck.attrs.every(a=>Number(a.points)>=MAX_ATTR)
+                 && ck.skills.every(x=>Number(x.level)>=MAX_SKILL && Number(x.mxn)>=MAX_SKILL);
+    if(allFull && !crewMax(s,c)){ toast(t('该船员的属性与技能已经是满值',"This crew member's attributes and skills are already maxed")); return; }
+    const okM = await setOp(maxKey(s, c), {t:'max', s, c},
+      t(`船员 ${crewName(s,c)}：属性与技能全满（属性 ${MAX_ATTR}，技能 ${MAX_SKILL}/${MAX_SKILL}）`,
+        `Crew ${crewName(s,c)}: max all attributes & skills (attributes ${MAX_ATTR}, skills ${MAX_SKILL}/${MAX_SKILL})`));
+    if(!okM) return;
+    // 整条「全满」覆盖同船员的单项暂存，避免同一属性出现两份补丁
+    ck.attrs.forEach(a=>S.pending.delete(`attr:${s}:${c}:${a.id}`));
+    ck.skills.forEach(x=>S.pending.delete(`skill:${s}:${c}:${x.sk}`));
+    refreshHeader(); render(); return;
+  }
+  if(k==='del' || k==='unadd' || k==='add'){
+    const b = boxOf(+el.dataset.b);
+    if(!b){ toast(t('容器索引无效','Invalid container index'), true); return; }
+    const eid = el.dataset.eid;
+    if(k==='del'){
+      const it = b.items.find(x=>x.eid===eid);
+      await setOp(`item:${b.idx}:${eid}`, {t:'item', box:b.idx, eid, mode:'del'},
+        t(`${b.label} · ${b.where}：删除 ${it.name}`, `${b.label} · ${b.where}: delete ${it.name}`));
+      render(); return;
+    }
+    if(k==='unadd'){
+      S.pending.delete(`item:${b.idx}:${eid}`); refreshHeader(); render(); return;
+    }
+    // add
+    const inp = document.querySelector(`input[data-add-eid="${b.idx}"]`);
+    const qin = document.querySelector(`input[data-add-qty="${b.idx}"]`);
+    const rawv = (inp.value||'').trim();
+    const m = rawv.match(/^(\d+)/);
+    if(!m){ toast(t('请从列表选择或输入物品 ID（如 157 基础金属）','Pick from the list or type an item ID (e.g. 157 Base Metals)'), true); inp.focus(); return; }
+    const id = m[1];
+    if(!S.defs.items[id]){ toast(t(`物品 ID ${id} 不在游戏数据中，已阻止（可能损坏存档）`,
+      `Item ID ${id} is not in the game data; blocked (it could corrupt the save)`), true); return; }
+    const q = Number(qin.value);
+    if(!(q>=1 && q<=1000000)){ toast(t('数量范围 1-1000000','Quantity range is 1-1000000'), true); return; }
+    const name = dname(S.defs.items[id]);
+    const okA = await setOp(`item:${b.idx}:${id}`, {t:'item', box:b.idx, eid:id, mode:'add', qty:q},
+      t(`${b.label} · ${b.where}：添加 ${name} × ${q}`, `${b.label} · ${b.where}: add ${name} × ${q}`));
+    if(okA){ inp.value=''; qin.value='10'; }
+    render(); return;
+  }
+  if(k==='restore'){
+    const name = el.dataset.name;
+    if(!(await ask(t(`恢复备份 ${name}？\n当前存档会先被备份，然后用该备份覆盖。`,
+                     `Restore backup ${name}?\nThe current save is backed up first, then overwritten by this backup.`)))) return;
+    loading(true);
+    api('/api/restore', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({p:S.slot, name})})
+      .then(()=>{ toast(t('已恢复备份 ','Backup restored: ')+name); return loadModel(); })
+      .catch(e=>toast(e.message, true))
+      .finally(()=>loading(false));
+    return;
+  }
+}
+
+/* raw 页交互（委托到 document，因为按钮在 render 后绑定） */
+document.addEventListener('click', async e=>{
+  const id = e.target.id;
+  if(id==='rawReload'){ await loadRawText(); toast(t('已重新读取','Reloaded')); }
+  if(id==='rawCopy'){
+    const ta = $('#rawText'); if(!ta) return;
+    try{ await navigator.clipboard.writeText(ta.value); toast(t('已复制','Copied')); }
+    catch(_){ ta.select(); document.execCommand('copy'); toast(t('已复制','Copied')); }
+  }
+  if(id==='rawQueue'){
+    const ta = $('#rawText'); if(!ta) return;
+    if(ta.value === S.raw){ toast(t('内容与存档一致，无需修改','Text matches the save file; nothing to change')); return; }
+    if(S.pending.size && !(await ask(t(`整体替换会覆盖当前 ${S.pending.size} 项暂存更改，继续？`,
+      `Replacing the whole XML will discard the current ${S.pending.size} staged change(s). Continue?`)))) return;
+    S.pending.clear();
+    S.pending.set('raw', {op:{t:'raw', text:ta.value},
+      desc:t(`整体替换存档 XML（${(ta.value.length/1024).toFixed(0)} KB）`,
+             `Replace whole save XML (${(ta.value.length/1024).toFixed(0)} KB)`)});
+    refreshHeader(); toast(t('已加入更改，点「保存到存档」写入','Added to changes; click "Save to File" to write'));
+  }
+  if(id==='bakNow'){
+    try{ const r = await api('/api/backup', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({p:S.slot})});
+      toast(t('已创建备份：','Backup created: ')+r.backup.name); loadBackups();
+    }catch(err){ toast(err.message, true); }
+  }
+  if(id==='bakRefresh') loadBackups();
+});
+raf(syncHeaderH);
+applyStatic();
+if(window.pywebview){
+  // 原生窗口：等引擎接口就绪后再拉取数据
+  if(window.pywebview.api && window.pywebview.api.call){ init(); }
+  else { window.addEventListener('pywebviewready', init, {once:true}); }
+}else{
+  init();
+}
+</script>
+</body>
+</html>
